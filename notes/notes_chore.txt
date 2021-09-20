@@ -1,0 +1,4 @@
+Notes on CHOREOGRAPHY |
+Mean Precision on 10 points is 0.8 mm |
+Residual Precision on 10 points is 2.8 mm |
+Figure of 8: 3125 6072 |
