@@ -1,3 +1,6 @@
+# Alliantech.
+# FOCUS on graphing Vibration Data.
+
 import dash
 import dash_html_components as html
 import dash_core_components as dcc

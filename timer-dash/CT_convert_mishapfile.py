@@ -1,3 +1,6 @@
+# Toolset: Thesis
+# Convert poorly formatted Unity File to csv format (for use as dataframe)
+
 import pandas as pd
 
 #df_xr_version = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/1630749025Dragon.txt', decimal=',')
