@@ -1,12 +1,23 @@
 # Toolset: Thesis
-# Convert poorly formatted Unity File to csv format (for use as dataframe)
+# Convert poorly formatted Unity File from the recording (0.1 version, 29 Sept 2021) 
+# to csv format (for use as dataframe)
 
 import pandas as pd
+#INPUT: .txt 
+#OUTPUT: .txt (manually change to .csv) readable as a df.
+#NEXT STEPS: timer-dash/CT_finding_sm_collision_data.py
 
+bot2bot_botpath = '/home/txa/Documents/data/eval_tests/bot2bot/pos_bot_bot2bot.txt'
+bot2bot_dronepath = '/home/txa/Documents/data/eval_tests/bot2bot/pos_drone_bot2bot.txt'
+bot2bot_dronecollision = '/home/txa/Documents/data/eval_tests/bot2bot/collision_drone_bot2bot.txt'
+
+# INPUT file
 #df_xr_version = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/1630749025Dragon.txt', decimal=',')
-with open("/home/txa/Documents/data/eval_tests/xr_chore/1630745389DragonSphere (UnityEngine.Transform)gameobject.txt", "r") as f:
+with open(bot2bot_dronecollision, "r") as f:
     notes = f.readlines()
-fn = open("/home/txa/Documents/data/eval_tests/xr_chore/df_dragon_position.txt", "w")
+
+# OUTPUT file in FOLDER (previously created)
+fn = open("/home/txa/Documents/data/eval_tests/bot2bot/df_dronecollsions.txt", "w")
 fn.write('time, x, y, z\n')
 fn.close()
 #print (notes)
@@ -21,7 +32,7 @@ for position in notes:
     x = position_array[2]+'.'+position_array[3]
     y = position_array[4]+'.'+position_array[5]
     z = position_array[6]+'.'+position_array[7][:-2]
-    f = open("/home/txa/Documents/data/eval_tests/xr_chore/df_dragon_position.txt", "a")
+    f = open("/home/txa/Documents/data/eval_tests/bot2bot/df_dronecollsions.txt", "a")
     f.write(str(time)+','+str(x)+','+str(y)+','+str(z)+'\n')
     f.close()
 

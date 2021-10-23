@@ -169,6 +169,7 @@ drive_out = np.array(df_test_vib2['Y:LogMag g (0-peak).2'][::])
 external_1 = np.array(df_test_vib2['Y:LogMag g (0-peak).3'][::])
 external_2 = np.array(df_test_vib2['Y:LogMag g (0-peak)'][::])
 difference_out = drone_out / drive_out
+# RuntimeWarning: invalid value encountered in true_divide
 time_test = np.array(df_test_vib2['X:Frequency (Hz)'][::])
 
 #print(df_test_vib2)

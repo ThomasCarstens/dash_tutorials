@@ -5,8 +5,13 @@ import pandas as pd
 # position_at_time = "/home/txa/Documents/data/eval_tests/xr_chore/tf_v2_bot2bot.csv"
 
 # hdi2?
-collision_time = "/home/txa/Documents/data/eval_tests/xr_chore/hdi_2/string_hdi2.csv"
-position_at_time = "/home/txa/Documents/data/eval_tests/xr_chore/hdi_2/tf_hdi2.csv"
+# COLLISION SCRIPT: list of detected collisions from Unity. /cf2pattern from the rosbag associated.
+just_collision_position = '/home/txa/Documents/data/eval_tests/bot2bot/df_dronecollisions.csv'
+#INPUTS #############
+# STRINGS FROM MESSAGE.
+collision_time = '/home/txa/Documents/data/eval_tests/bot2bot/events_drone.csv'
+# POSITION SCRIPT: /tf from the rosbag associated.
+position_at_time = "/home/txa/Documents/data/eval_tests/bot2bot/tf_drone.csv"
 
 get_time = pd.read_csv(collision_time)
 
@@ -39,8 +44,8 @@ for i in range(len(every_kill_time)):
     if len(packet_array)>1:
         print('it happens')
 
-# for each in coincide_array:
-#     print (each[0])
+for each in coincide_array:
+    print (each[0])
 
 # 1630746044001918783
 # 1630746045003619724
@@ -65,10 +70,10 @@ for each in coincide_array:
 for pos in pos_array:
     print(pos)
 
-fn = open("/home/txa/Documents/data/eval_tests/xr_chore/df_hdi2_collisions.txt", "w")
+fn = open("/home/txa/Documents/data/eval_tests/bot2bot/df_clean_collisions.txt", "w")
 fn.write('time, x, y, z\n')
 fn.close()
 for i in range(len(pos_array)):
-    f = open("/home/txa/Documents/data/eval_tests/xr_chore/df_hdi2_collisions.txt", "a")
+    f = open("/home/txa/Documents/data/eval_tests/bot2bot/df_clean_collisions.txt", "a")
     f.write(str(pos_array[i][0])+','+str(pos_array[i][1])+','+str(pos_array[i][2])+','+str(pos_array[i][3])+'\n')
     f.close()

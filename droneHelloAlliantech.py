@@ -150,8 +150,9 @@ def move_square(scf):
         for vector3 in spiral_points:
             mc.move_distance(distance_x_m=vector3[0], distance_y_m=vector3[1], distance_z_m=vector3[2],
                         velocity=0.5)
+        mc.land(velocity = 0.3)
             #time.sleep(1)
-        mc.stop()
+        #mc.stop()
 
 def move_up_and_release(scf):
     with MotionCommander(scf, default_height=DEFAULT_HEIGHT) as mc:
@@ -331,7 +332,7 @@ def thread_drone():
 if __name__ == '__main__':
 
     numRobots = 1
-    r = 0.8
+    r = 0.4
     height = 0.3
     final_height = 1.0
     w = 2 * np.pi / numRobots
@@ -348,7 +349,8 @@ if __name__ == '__main__':
     nb_points = 100
     height_increment = height
     for t in np.linspace(0, T, nb_points):
-        height_increment += (final_height - height) / nb_points 
+        #height_increment += (final_height - height) / nb_points 
+        height_increment = 0
         absolute_pt = [r * np.cos(w * t + phase), r * np.sin(w * t + phase), height_increment]
         spiral_absolute.append (absolute_pt)
         if t != 0:
