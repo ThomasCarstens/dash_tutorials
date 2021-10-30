@@ -46,8 +46,8 @@ def fita2blen(f_val, x_desired):
 
 #df_log= pd.read_csv('/home/txa/Documents/data/DATA_ zone_monitoring/10_05_12_log_message_0.csv')
 #df_log= pd.read_csv('/home/txa/Documents/data/DATA_ zone_monitoring/10_06_37_log_message_0.csv')
-df_log= pd.read_csv('/home/txa/Documents/data/DATA_ zone_monitoring/03_12_58_log_message_0.csv')
-df_adc= pd.read_csv('/home/txa/Documents/data/DATA_ zone_monitoring/03_12_58_adc_report_0.csv')
+df_log= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/03_12_58_log_message_0.csv')
+df_adc= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/03_12_58_adc_report_0.csv')
 
 
 #log_5_2021-8-10-05-26-30.ulg
@@ -99,13 +99,13 @@ x_adc = milliseconds_adc - (df_adc['timestamp'][24531])/1000
 # SLICE ACCELERATION #
 ######################
 
-df_sansmousse = pd.read_csv('/home/txa/Documents/data/F1F2F3voupe/Flight1_coupe_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
-df_avecmousse = pd.read_csv('/home/txa/Documents/data/F1F2F3voupe/Flight3MOUSSE_coupe_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
-df_test_vibration = pd.read_csv('/home/txa/Documents/data/PiedDrone/test-drone_1.csv', sep=';')
-df_pieton = pd.read_csv('/home/txa/Documents/data/Pieton4_coupe_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
-df_test_vib2 = pd.read_csv('/home/txa/Documents/data/PiedDrone/spectrum_test_pied_mycsv.csv', decimal=".", sep=',', skiprows = 28)
-df_find_start_msg = pd.read_csv('/home/txa/Documents/data/DATA_ zone_monitoring/10_06_37_log_message_0.csv')
-df_dht11_1 = pd.read_csv('/home/txa/Documents/data/DATA_ zone_monitoring/DHT11.CSV', decimal=".", sep=',', index_col=False)
+df_sansmousse = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/F1F2F3voupe/Flight1_coupe_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
+df_avecmousse = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/F1F2F3voupe/Flight3MOUSSE_coupe_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
+df_test_vibration = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/PiedDrone/test-drone_1.csv', sep=';')
+df_pieton = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/Pieton4_coupe_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
+df_test_vib2 = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/PiedDrone/spectrum_test_pied_mycsv.csv', decimal=".", sep=',', skiprows = 28)
+df_find_start_msg = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/10_06_37_log_message_0.csv')
+df_dht11_1 = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/DHT11.CSV', decimal=".", sep=',', index_col=False)
 #Data restart
 #df_dht11_1 = df_dht11_1.drop([5362])
 df_dht11_1 = df_dht11_1[:5362]

@@ -16,7 +16,7 @@ import os
 print(os. getcwd())
 
 
-df_chore= pd.read_csv('~/Documents/data/eval_tests/tf_chore.csv')
+df_chore= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_chore.csv')
 front_traj_graph = go.Figure()
 traj_graph = go.Figure()
 for id in range(3):
@@ -368,13 +368,13 @@ def convert2df(url):
         print('empty')
     return df
 ## TF
-df_chore= pd.read_csv('~/Documents/data/eval_tests/tf_chore.csv')
-df_hover= pd.read_csv('~/Documents/data/eval_tests/tf_hover.csv')
-df_2d1a= pd.read_csv('~/Documents/data/eval_tests/tf_2d1a.csv')
-df_3d1a= pd.read_csv('~/Documents/data/eval_tests/tf_3d1a.csv')
-df_xr1= pd.read_csv('~/Documents/data/eval_tests/tf_xr1.csv')
+df_chore= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_chore.csv')
+df_hover= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_hover.csv')
+df_2d1a= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_2d1a.csv')
+df_3d1a= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_3d1a.csv')
+df_xr1= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_xr1.csv')
 
-df_ht1= pd.read_csv('~/Documents/data/eval_tests/tf_ht1.csv')
+df_ht1= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_ht1.csv')
 ## CAMERA
 url_cam3_xr1 = 'https://drive.google.com/file/d/1nMD1hMEF8oU3a3u71dxpSC-W8x1NmBvW/view?usp=sharing'
 url_cam3_xr1 = 'https://drive.google.com/file/d/1GvaVIhLfAs4v_dQsZPFRvw5s5v5cq6xs/view?usp=sharing'
@@ -385,17 +385,21 @@ url_xrchore = 'https://drive.google.com/file/d/1GvaVIhLfAs4v_dQsZPFRvw5s5v5cq6xs
 #df_xrchore = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/xr_chore.csv')
 #df_xrchore = convert2df(url_xrchore)
 
-df_xr_version = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/demofile2.csv', sep=',')
-print(list(df_xr_version.columns.values))
-df_xr_drone = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/drone_xr_pos.csv', sep=',')
+## DATA INEXISTENT
+#df_xr_version = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/demofile2.csv', sep=',')
+#print(list(df_xr_version.columns.values))
+#df_xr_drone = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/drone_xr_pos.csv', sep=',')
 
-df_hdi_collisions = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/df_hdi_collisions.csv', sep=',')
-df_hdi2_collisions = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/hdi_2/df_hdi2_collisions.csv', sep=',')
+#df_hdi_collisions = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/df_hdi_collisions.csv', sep=',')
+#df_hdi2_collisions = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/hdi_2/df_hdi2_collisions.csv', sep=',')
 
-df_hdi_position = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/df_hdi_position.csv', sep=',')
-df_dragon_position = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/df_dragon_position.csv', sep=',')
-df_hdibag_hand = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/tf_hdi.csv')
-df_bot2bot = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/tf_bot2bot.csv')
+#df_hdi_position = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/df_hdi_position.csv', sep=',')
+#df_dragon_position = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/df_dragon_position.csv', sep=',')
+#df_hdibag_hand = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/tf_hdi.csv')
+#df_bot2bot = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/tf_bot2bot.csv')
+# TO BE ADDED
+
+
 # df_traj = pd.DataFrame({
 
 #                         'df_chore': [

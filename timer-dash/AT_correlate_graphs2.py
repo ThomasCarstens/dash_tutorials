@@ -35,15 +35,15 @@ def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
 
 #np.where(a < 5, a, 10*a)
 
-path1 = '~/Documents/data/in-vivo/11_40/11_40_32_'
-path2 = '~/Documents/data/in-vivo/11_56/11_56_06_'
-path3 = '~/Documents/data/in-vivo/12_10/12_10_04_'
-path4 = '~/Documents/data/in-vivo/12_22/12_22_20_'
+path1 = '~/Documents/data/droneData_alliantech/in-vivo/11_40_32_'
+path2 = '~/Documents/data/droneData_alliantech/in-vivo/11_56_06_'
+path3 = '~/Documents/data/droneData_alliantech/in-vivo/12_10_04_'
+path4 = '~/Documents/data/droneData_alliantech/in-vivo/12_22_20_'
 
-df_traj1= pd.read_csv('~/Documents/data/in-vivo/11_40/11_40_32_vehicle_local_position_0.csv')
-df_traj2= pd.read_csv('~/Documents/data/in-vivo/11_56/11_56_06_vehicle_local_position_0.csv')
-df_traj3= pd.read_csv('~/Documents/data/in-vivo/12_10/12_10_04_vehicle_local_position_0.csv')
-df_traj4= pd.read_csv('~/Documents/data/in-vivo/12_22/12_22_20_vehicle_local_position_0.csv')
+df_traj1= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/11_40_32_vehicle_local_position_0.csv')
+df_traj2= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/11_56_06_vehicle_local_position_0.csv')
+df_traj3= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/12_10_04_vehicle_local_position_0.csv')
+df_traj4= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/12_22_20_vehicle_local_position_0.csv')
 
 ####################
 # PX4 ACCELERATION #
@@ -69,9 +69,9 @@ for i in range(len(df_acc2['x'])):#range(len(log_acc['timestamp']))
 ######################
 # SLICE ACCELERATION #
 ######################
-df_slice1 = pd.read_csv('~/Downloads/Test_Flight2_altitude_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
-df_slice = pd.read_csv('~/Downloads/Test_Flight1_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
-df_mini1 = pd.read_csv('~/Documents/data/in-vivo/11_56/Drone.csv')
+df_slice1 = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/in-vivo/Test_Flight2_altitude_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
+df_slice = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/in-vivo/Test_Flight1_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
+df_mini1 = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/in-vivo/Drone.csv', skiprows = 21)
 # ATTEMPT TO PUT EXACT TIMES.
 import datetime
 start_1 = datetime.datetime(2021, 8, 6, 14, 1, 50)
@@ -122,6 +122,8 @@ difference = df_slice1_timestamps [498903] - df_acc2_timestamps[38000]   #START 
 print("=>", difference )
 print("last is", df_slice1_timestamps [-1])
 print("=>", df_slice1_timestamps [517903] - df_acc2_timestamps[38200] )
+
+
 #SLICE[0:1947904] ==> PX4[33100:52280]
 import numpy as np
 
@@ -297,6 +299,16 @@ spectrogram_graph_mini.add_trace(
         colorscale='Jet',
     ),
 )
+
+spectrogram_graph_mini.update_layout(
+    title="Spectrogram of FIMI over Flight",
+    title_x=0.5,
+    #title_y=0.95,
+    xaxis_title="Time (s)",
+    yaxis_title="Frequency (rpm)",
+
+    )
+
 # fusion_graph.add_trace(
 #     go.Scattergl(
 #         x =  df_slice1_timestamps[498903:517903:],

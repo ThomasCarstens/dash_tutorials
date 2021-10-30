@@ -30,3 +30,24 @@ def fita2blen(f_val, x_desired):
     interp = list(interp)
     return interp
 '/home/txa/Documents/DashBeginnerTutorials/TUT_data_fit_function.py' #densify function tester.
+
+template_graph.add_trace(go.Scatter(x=x_cf3, y=y_cf3,
+                            mode='lines',
+                            name='Trace 1',
+                            marker=dict( color='#ff7400')))
+
+template_graph.add_trace(go.Scatter(x=x_cf4, y=y_cf4,
+                            mode='lines',
+                            name='Trace 2',
+                            marker=dict( color='#d9dadc')))
+
+# GRAPHING UTILITIES.
+_3d_traj_graph = go.Figure(layout = dark_layout)
+traj_graph.update_layout(
+    title="Timeline View",
+    title_x=0.5,
+    #xaxis_title="",
+    #yaxis_title="Gain",
+)
+template_graph.update_xaxes(range=(-1, 1))
+template_graph.update_yaxes(range=(-1, 1))
