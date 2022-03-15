@@ -1,0 +1,75 @@
+    # 435.34,0.6797485,0.9019916,0.03638506
+    # 444.24,-0.5533533,0.8829635,0.06221485
+    # 447.54,0.7511539,1.895956,0.4300447
+    #UNITY COLLISION 4_5
+    t_xr_col4_5 = 453.74
+    x_xr_col4_5 = 0.9061708
+    y_xr_col4_5 = 1.510756 #looks like z...
+    z_xr_col4_5 = 0.05144691
+
+    t_xrcf3_col4_5 = 453.74
+
+    x_cf3_col4_5 = 0.3020578622817993
+    y_cf3_col4_5 = 0.01714901626110077 #looks like z...
+    z_cf3_col4_5 = 0.5035853981971741
+
+
+    template_graph.add_annotation(x=x_cf3_col4_5, y=y_cf3_col4_5,
+            text="X4_5",
+            showarrow=True,
+            arrowhead=1)
+    x_cf4_col4_5 = 0.27954569458961487
+    y_cf4_col4_5 = 0.6802809834480286 #looks like z...
+    z_cf4_col4_5 = 0.5006003975868225
+    
+    template_graph.add_annotation(x=x_cf4_col4_5, y=y_cf4_col4_5,
+            text="X4_5",
+            showarrow=True,
+            arrowhead=1)
+    # 0.3020578622817993	0.01714901626110077	0.5035853981971741
+    # 0.27954569458961487	0.6802809834480286	0.5006003975868225
+
+    # 455.74,-1.723526,1.188431,0.8545246
+
+    #COLLISION LABELS
+    #collision 1: 
+    # 0.2669757306575775	0.01485497411340475	0.2985435724258423
+    # 0.5012664794921875	-0.0016240749973803759	0.34219783544540405
+
+    #COLLISION LABELS
+    #collision 2: 
+    # -0.29096975922584534	0.03429809585213661	0.28186360001564026
+    # -0.03400745987892151	0.4894290268421173	0.4243367314338684
+
+    #COLLISION LABELS
+    #collision 3: 
+    x_cf3_collision3 = 0.24138008058071136 
+    y_cf3_collision3 = 3.257952266721986e-05 
+    z_cf3_collision3 = 0.29059678316116333
+    template_graph.add_annotation(x=x_cf3_collision3, y=y_cf3_collision3,
+            text="COL3",
+            showarrow=True,
+            arrowhead=1)
+
+    x_cf4_collision3 = -0.0720825120806694
+    y_cf4_collision3 = 0.2854848802089691 
+    z_cf4_collision3 = 0.3842247426509857
+    template_graph.add_annotation(x=x_cf4_collision3, y=y_cf4_collision3,
+            text="COL3",
+            showarrow=True,
+            arrowhead=1)
+
+    #landing point: 
+    x_landstate = -0.27790147066116333
+    y_landstate = -0.002591643948107958 
+    z_landstate = 0.29135239124298096
+    template_graph.add_annotation(x=x_landstate, y=y_landstate,
+            text="LAND",
+            showarrow=True,
+            arrowhead=1)
+
+
+# PILOTING EXTRA
+
+PEACE	1.62755038759904E+018	-0.5962870121002197	0.08959171921014786	0.6373937129974365
+PEACE	1.62755038766267E+018	-0.5793214440345764	0.08844465762376785	0.6384257078170776

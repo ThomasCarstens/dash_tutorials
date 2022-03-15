@@ -1,0 +1,761 @@
+%=============================================
+\chapter{Experimentations for Human-Drone Interfaces}\label{c2}
+%Experimental Work Done on the UAV Testbed.
+
+%Developing a User Interface For UAV Flight Analysis
+%NEW PROPOSED TITLE: Developing a User Interface For UAV Monitoring during Flight
+% CHAPTER INCLUDES:
+% Different MODES of work.
+% - Hand control MODE (Related Work: other Hand Control, 
+% other communication protocols.)
+% - Drone Monitoring MODE: DASHBOARD. Shows device status + realtime vid during flight.
+% - Crossreality MODE. Shows DRONE VIEW.
+% ---------
+%OLD: Developing a Mixed Reality Environment for Navigation using Realtime Virtual Sensors
+\textbf{Currently contains \the\numexpr\getpagerefnumber{c3}-\getpagerefnumber{c2}\relax  pages | Calculated dynamically.}
+
+
+% This chapter will present one of your project made during your Master Thesis. 
+% You can change this structure if you feel it's more adapted. Be sure to discuss with you advisor beforehand.
+
+
+
+\section{Introduction}
+%\textbf{~1 page}
+
+Human-drone interaction is a broad research field, for instance, a researcher can design new drones’ shapes with friendly-like appearance, while another researcher can focus on designing new user interfaces that allow non-skilled pilots to accurately operate drones without extensive training.
+
+
+% \begin{itemize}
+%     \item What is the context of your work? Present the field in general
+%     \item Resume briefly the projecy your contribution
+% \end{itemize}
+
+\section{Related Work}
+%\textbf{~4 pages}
+% \begin{itemize}
+%     \item How did researchers tackle the challenge at hand in the past
+%     \item What are the trade-offs of the different alternatives and why did you choose a particular one
+%     \item How does your contribution relate to prior work
+%     \item Also includes technical state of the art, i.e. available technologies and technologies used in this work
+% \end{itemize}
+\subsection{Human-Drone Interaction}
+
+
+
+ \cite{tezza_andujar_2019} \hspace*{0.3cm} \textit{\citename{tezza_andujar_2019}{author}}
+\hspace*{0.5cm}	define Human-Drone Interaction (HDI) as a field of research that consists of understanding  / designing / evaluating drone systems for use by / with humans. Although some knowledge can be derived from the field of human-robot interaction, drone’s unique characteristic to freely fly in a 3D space, and unprecedented shape makes human-drone interaction a research topic of its own. While this field of research is relatively new, the current state of the art research in human-drone interaction consists of evaluating and developing new control modalities, enhancing human-drone communication, evaluating interaction distance, and developing new use cases.
+
+\begin{marginfigure}%[h]
+    %\RaggedRight
+    \includegraphics[width=6cm]{images/hdi_fields.png}
+    \caption{Major fields that constitute HDI.}
+\end{marginfigure}
+
+% \begin{figure}
+%  \hfill\begin{minipage}{.99\textwidth}\centering
+%   \caption{Major fields that constitute HDI.}
+%   \includegraphics[width=11cm]{images//hdi_fields.png}
+
+%  \end{minipage}
+% \end{figure}
+
+\subsection{Exploring more Intuitive Gesture Control}
+
+ \cite{cauchard_e_zhai_landay_2015} \hspace*{0.3cm} \textit{\citename{cauchard_e_zhai_landay_2015}{author}}
+\hspace*{0.5cm}	focalise on innovative methods to \textbf{interact with drones}, including gesture, speech, brain-computer interfaces, and others. As drones have different characteristics than ground robots, such as not allowing touch interaction, it is unclear whether existing techniques can be adapted to flying robots. Their \textbf{user-centric design strategy} seeks to understand how users naturally interact with drones. 
+
+
+\subsection{Computer Vision for UAV Research}
+
+Compared to wearable sensor-based approaches, automated methods for video analysis based on computer vision technology are almost non-invasive. With the state-of-art computer vision technology, drones are therefore finding important applications in a wide range of fields.
+
+
+\\\\\cite{liu_szirányi_2021} \hspace*{0.3cm} \textit{\citename{liu_szirányi_2021}{author}}
+\hspace*{0.5cm} contribute to an opensource database of body gestures which they test in practice with a drone. This paper contributes with an outdoor recorded drone video dataset for action recognition, an outdoor dataset for UAV control and gesture recognition, and a dataset for object detection and tracking, among others.
+
+
+\subsection{Pose Recognition Algorithms}
+
+According to \cite{48292},  “Robust real-time hand perception is a decidedly challenging computer vision task, as body parts often occlude themselves or each other (e.g. finger/palm occlusions and handshakes) and lack high contrast patterns (e.g. between fingers).” To respond to this challenge, the Mediapipe framework \cite{48292} bases itself on a \textbf{Machine Learning model}, and on techniques for\textbf{ efficient resource management}  for low latency performance on CPU and GPU. 
+
+\begin{marginfigure}%[h]
+    %\RaggedRight
+    \includegraphics[width=6cm]{images/openpose.png}
+    \caption{OpenPose joint data and skeleton information}
+\end{marginfigure}
+
+In contrast, OpenPose  \cite{liu_szirányi_2021} employs a \textbf{convolutional neural network} to produce two heap-maps, one for predicting joint positions, and the other for partnering the joints into human skeletons. In brief, the input to OpenPose is an image and the output is the skeletons of all the people this algorithm detects. Each skeleton has 18 joints, counting head, neck, arms, and legs. Each joint position is spoken to within the image arranged with coordinate values of x and y, so there’s an add up to 36 values of each skeleton.
+
+%NEXT TIME: WHEN I HAVE THE TIME !!
+\subsection{Mixed Reality for UAV Research}
+
+Simulation systems have long been an integral part of the development of robotic vehicles. They allow engineers to identify errors early on in the development process, and allow researchers to rapidly prototype and demonstrate their ideas. 
+
+Immersive robotic simulations can be used to judge the performance of the robot and/or its concept. This usage can increase the efficiency and decrease the costs of the development. 
+
+The first published definition of Mixed Reality (MR) was given by Milgram and Kishino as the merging of physical and virtual worlds [2]. 
+
+[MRLOC] T. Phan et al.		describe the design of a mixed reality test bed which allows dispersed humans and physically embodied agents to collaborate within a single virtual environment.
+
+Drone simulators have various applications, of which two are explored here: 
+
+\begin{itemize}
+    \item \textbf{Generating exteroceptive sensor data}: capturing sensor feeds of the environment for one or more drones simultaneously.
+    
+    \item \textbf{Testing navigation behaviour}: Testing flight patterns subject to simulated environment stimuli, prior to real-world deployment.
+\end{itemize}
+
+\subsection{Generating exteroceptive sensor data}
+
+Simulation can be a huge advantage when real robot prototypes or products are not available or cannot be used due to other circumstances. During the development, simulation can be used to assess the basic hardware functionality.
+
+For instance, FlightGoggles is capable of high-fidelity simulation of various types of exteroceptive sensors, such as RGB-D cameras, time-of-flight distance sensors, and infrared radiation (IR) beacon sensors. This example can be extended to multiple sensors simultaneously, leading the way to richer distributed swarm systems.
+
+\begin{marginfigure}%[h]
+    %\RaggedRight
+    \includegraphics[width=5cm]{images/xr_sota/applications_flightmare.png}
+    \caption{Flightmare: overview and applications.}
+\end{marginfigure}
+
+However, older simulators don’t provide an efficient API to access 3D information of the environment \cite{song_naji_kaufmann_loquercio_scaramuzza_2021}. To foster research in this direction, Flightmare provides an interface to export the 3D information of the full environment (or a region of it) as point cloud with any desired resolution.
+
+\subsection{Testing navigation behaviour prior to real-world deployments}
+
+Additionally, taking a step-by-step approach, different functional elements on a robot can be tested in parallel and reduce development time. For instance, the algorithms for localization, motion planning or control can be tested, improved, and integrated continuously. 
+
+There are various artificial intelligence algorithms concerned with the thematic of guidance, navigation and control (GNC). A subset of these algorithms is explored in,  pertaining to Deep Reinforcement Learning (DRL). These techniques can improve the drone operation, and yet, when deploying to real-life scenarios, there are several challenges:
+
+\begin{itemize}
+    \item Optimising the \textbf{flight stability} of a UAV. This is relevant with changing payloads, unexpected weather conditions (dust, rain, changing wind), as well as preventive maintenance (motor degradation, battery damage).
+
+%     \item\item Changing payloads: control algorithms for drone control as soon as 2019.
+% 	Weather conditions: bridging the reality gap from simulation to real-life scenarios. While there is already work to this effect (zero shot learning, ETH), deployment is challenging into autonomous vehicles.
+% 	Flight with sensors.
+
+
+    \item Optimising the \textbf{flight path} of a UAV, subject to several sensor inputs. Sensors can inform the drone’s flight path and flight speed. This gives several ways to optimise the data acquisition process, from more complex data intakes and various activation/triggering optimisations.
+ 
+% 	Richer data acquisition: exploration according to sensor reward functions, multi-agent cooperation for data intake, closer coupling of navigation and data acquisition sensors for optimum data intake (according to battery level or signal interference). 
+
+% 	Dynamic data intake: autonomous flight in uncertain environments and moving objects. While autonomous vehicles have clear limitations
+\end{itemize}
+
+\subsection{Challenges to achieving these objectives}
+
+Here we focus on three key aspects: 
+
+\begin{itemize}
+    \item Fast prototyping of new environments: the programmability element.
+    
+    \item A wide suite of sensors and of physical effects: the variability element.
+
+    \item A true-to-reality physical environment: the limits of the physical model.
+\end{itemize}
+
+
+ With the addition of an overhead camera to do tracking, the pose of the physical robots can be incorporated into a virtual environment  . Phan achieves this injection of virtual bodies using Unity’s networking architecture as well as open-source robot software and hardware.  
+
+
+% 5-10 research references articulated in a telling storing demonstrating
+
+\pagebreak
+\section{Drone Piloting With Gesture}
+%OLD TITLE: Piloting drones via external
+\subsection{Overview of Section}
+
+Gestures are the most natural way for people to express information in a non-verbal way.  Gesture control is an entire topic in computer science that aims to interpret human gestures using algorithms. Users can simply control devices or interact without physically touching them. Nowadays, such types of control can be found from smart TV to surgery robots, and UAVs are not the exception.
+
+This project has two parts: a gesture recognition pipeline, followed by a drone control pipeline. These are termed pipelines, as a live performance will require a smooth workflow: from live gesture recognition, to live streaming commands. 
+
+\subsection{Hand Gesture Controller}
+
+\subsubsection{System Overview}
+
+In this project, we employ a \textbf{3D Pose Estimator}, described in the following section, followed by a \textbf{Gesture Classification} Script.
+
+Whereas current state-of-the-art approaches rely primarily on powerful desktop environments for inference, MediaPipe Hands achieves real-time performance on a mobile phone, and even scales to multiple hands. This is a key component of running a Hand Gesture Controller in parallel with the swarm stack described in Chapter 2.
+
+\subsubsection{Machine Learning 3D Pose Estimation}
+
+\begin{marginfigure}%
+  \includegraphics[width=7cm]{images/hca.png}
+  \caption{Mediapipe algorithm in gesture recognition workflow}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+% \begin{figure*}[h]
+%     \raggedright
+%     \includegraphics[width=10cm]{images/hca.png}
+%     \caption{Mediapipe algorithm in gesture recognition workflow}
+% \end{figure*}
+
+ MediaPipe Hands \cite{48292} is a high-fidelity hand and finger tracking solution. It employs machine learning (ML) to infer 21 landmarks of a hand from just a single video frame. 
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=10cm]{images/hand_landmarks.png}
+    \caption{MediaPipe Hands data and joints information.}
+\end{figure*}
+
+Precise key-point localization of 21 3D hand-knuckle coordinates remain inside the detected hand regions. This allows us to have the spatial position of each of the joints of your hand using only a normal camera.
+
+\subsubsection{Gesture Classification Script}
+
+\begin{marginfigure}%
+  \includegraphics[width=7cm]{images/hcb.png}
+  \caption{Classification Script in gesture recognition workflow}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+Using these key landmarks, it is possible to discern hand poses and develop a library of drone-piloting \textbf{hand signals}. 
+
+% \begin{figure*}[h]
+%     \raggedright
+%     \includegraphics[width=10cm]{images/hcb.png}
+%     \caption{Classification Script in gesture recognition workflow}
+% \end{figure*}
+
+
+
+
+The desired gesture is hardcoded by its absolute position. For example, if Figure 1’s landmark 8 is below the landmark 5, it can be interpreted as closing your index. 
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=3.5cm]{images/hand_drone_interaction/up_censored.jpg}
+    % \includegraphics[width=4cm]{images/hand_drone_interaction/down.PNG}
+    \includegraphics[width=3.5cm]{images/hand_drone_interaction/fist.png}
+    \includegraphics[width=3.5cm]{images/hand_drone_interaction/peace_censored.jpg}
+    \caption{Static Hand Signals: Right, Left, Up and Down}
+\end{figure*}
+
+To remove unnecessary movements due to false detection, even with such a precise model, a special buffer was created, which finds the most frequent gesture in a window of gestures. This helps to remove glitches or inconsistent recognition [Appendix A, Section \ref{code:modebuffer}].
+
+\subsubsection{Gesture Speed and Angle}
+
+% \begin{marginfigure}%
+%   \includegraphics[width=5cm]{images/hdi_system/speed_angle.png}
+%   \caption{Gesture Speed in Message Streaming Workflow}
+%   \label{fig:marginfig}
+% \end{marginfigure}
+
+Hand movement is detected for its \textbf{angle} and \textbf{speed}. As the hand moves in a specific direction on the screen, the components of that vector can be used to calculated the speed and angle of the drone’s movement. To help smoothen the output velocity, the average of the pixel distances is taken over a constant time interval [Appendix A, Section \ref{code:pixeldistances}].
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=3.5cm]{images/hand_drone_interaction/grab_down_censored.jpg}
+    \includegraphics[width=3.5cm]{images/hand_drone_interaction/grab_up_fast_censored.jpg}
+    \includegraphics[width=3.5cm]{images/hand_drone_interaction/grab_up_slow_censored.jpg}
+    % \includegraphics[width=4cm]{images/hand_drone_interaction/left_down.png}
+    \caption{Dynamic Hand Signals: Right, Left, Up and Down}
+\end{figure*}
+
+\subsubsection{Drone Gesture-to-Command Script}
+
+Using a live gesture recognition module, a system is designed for streaming commands to be sent to the drone.
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=11cm]{images/hdi_system/command_pipeline.png}
+    \caption{Workflow of Streaming Commands sent to the Drones}
+\end{figure*}
+
+Note that the critical information flow between the components of the system is \textbf{unidirectional}. Bidirectional communication, e.g. telemetry from the vehicles, is supported, but is not required for controlled operation. All communication is done in a distributed, one-way manner, such that the gesture recognition workflow is not affected by the drone listener and there is no reliance on high-level code to keep track of the various components, preventing unnecessary interdependence. The Gesture-to-Command script decrypts the messages encoded into a custom ROS message. This workflow serves as a fall back during experiments and demonstrations.
+
+\subsubsection{Message passing between applications}
+
+The following message is passed via a ROS topic (TCP/IP message). It is then depacketized upon arrival.
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=10cm]{images/hdi_system/msg_structure.png}
+    \caption{Message structure adopted for command streaming}
+\end{figure*}
+
+\subsubsection{Velocity Filter}
+
+\begin{marginfigure}%
+  \includegraphics[width=6cm]{images/hdi_system/filter_shapes.png}
+  \caption{Profiles for velocity filter: gaussian (a) followed by sigmoidal structure}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]
+{python}
+    sigmoid = lambda v : 1/(1+m.exp(-v))                                       
+    #fonction sigmoid entre 0-1 avec une evolution 
+    #exponentielle proche de 0
+    distance_ellipsoid= lambda x,y,z : 
+        (x**2/a**2)+(y**2/b**2)+(z**2/c**2)     
+    #distance avant sortie de l'arene normalise entre 0-1
+    closeness = lambda xa, xb, ya, yb, za, zb : 
+        ((xa-xb)**2+(ya-yb)**2+(za-zb)**2)**0.5 
+    #distance avant sortie de l'arene normalise entre 0-1
+    }
+
+\end{minted}
+%\caption{Example of Action Concurrence Code.}
+\captionof{minted}{\textbf{Template -1:} Setting up a sigmoid distribution for the drone velocity filter.}
+
+\begin{marginfigure}%
+  \includegraphics[width=5cm]{images/hdi_system/velocity_filter_pipeline.png}
+  \caption{Velocity Filter in Message Streaming Workflow}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+
+
+\pagebreak
+\subsection{Experimentation}
+
+
+\subsubsection{Objectives}
+
+Using the swarm framework from the previous Chapter, it is possible to program a single or multiple Crazyflies to respond to piloting commands. This is undertaken in the next section.
+
+\begin{itemize}
+    \item Are there any discernable differences in the use of the two flight modes?
+    \item Are these flight modes reliable?
+    \item What are effective ways to examine the operator's interactions with the drone?
+\end{itemize}
+
+\subsubsection{Methodology for Data Collection}
+
+We design our experiments for an operator to guide the drone in an intuitive way through hand commands. 
+An experiment is undertaken in two sections:
+\begin{itemize}
+    \item 30 seconds in Flight Mode 1: Position Update Mode. This mode moves the drone translationally in three axes based on an absolute position. 
+    \item 30 seconds in Flight Mode 2: Velocity Update Mode. This mode moves the drone according to inputted velocities.
+\end{itemize}
+
+Throughout this procedure, data is collected as a rosbag, a self-contained file for recording ROS nodes and topics. This file contains:
+
+\begin{itemize}
+    \item The poses of the drone, ordered by timestamp: /tf topic.
+    \item The hand gesture message contents: /hand\_signal topic.
+\end{itemize}
+
+The experiment took place on July 29, 2021. It was filmed from three angles, and a presentation video is uploaded \href{https://youtu.be/ur18A4W8EUs}{on Youtube.} The results were saved in a rosbag format. This rosbag is 
+\href{https://drive.google.com/file/d/12C14xrYDUlFXuMxzH13IkPvPg4DTfXfE/view?usp=sharing}{accessible online.}
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=11cm]{images/Signal_Mode.JPG}
+    %\includegraphics[width=7.6cm]{images//DSCF0871.jpg}
+
+    \caption{Camera recording setup and demonstration of a “DOWN” command}
+\end{figure*}
+
+\subsubsection{Methodology for Data Processing}
+
+Data is processed into resulting graphs in order to better understand the nature of the interaction between human and drone. These graphs aim to give hints as to the \textbf{operator}'s interactions with the drone, but also indications of the \textbf{reliability} of the system workflow.
+
+\begin{enumerate}
+    \item Separating the \textbf{two flight regions} according to timestamps.
+    \item Plotting the drone's \textbf{position} and its \textbf{velocity} in these two modes.
+    \item Plotting the \textbf{desired speed} transmitted from the gesture script.
+    \item Additionally, to label the drone positions where each hand signal is detected.
+\end{enumerate}
+
+
+% \begin{figure*}[h]
+%     \centering
+%     \includegraphics[width=8cm]{images/Sliding_Mode - Copy2.jpg}
+%     \caption{Experimental Setup: Velocity Streaming (a) Experiment Workflow (b) with a “LEFT SLIDE” command}
+% \end{figure*}
+
+\pagebreak
+\subsection{Results}
+
+
+\subsubsection{Trajectory Graphs}
+The data that is examined extends from 11:19:20 to 11:20:30 on July 29, 2021. The drone's trajectory is first plotted on the X-Z plane.
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=11cm]{images/hdi_graphs/Piloting_Frontview.png}
+    \caption{Frontview Trajectory Graph with Gesture Piloting.}
+\end{figure*}
+
+A custom script was required to timestamp the /hand\_signal data [Appendix A, Section \ref{code:timestamp_generation}]. Using these timestamps, the first occurrence of the state change signals were identified and the two flight regions were plotted separately. The trajectory is plotted on other planes, over the two flight regions.
+
+\begin{figure*}[!h]
+    \raggedright
+    \includegraphics[width=6cm]{images/hdi_graphs/Piloting_Topview.png}
+    \includegraphics[width=6cm]{images/hdi_graphs/piloting_3dview.png}
+    \includegraphics[width=6cm]{images/hdi_graphs/Piloting_Frontview.png}
+    \includegraphics[width=6cm]{images/hdi_graphs/Piloting_Sideview.png}
+    \caption{Flight Trajectory Graphs with Gesture Piloting.}
+\end{figure*}
+
+
+\subsubsection{Timeline Graphs}
+
+The actual drone velocities are calculated from successive pose data points over the period of interest. This calculation assumes a stable 120 +- 0.5 Hz pose data frequency, which is ascertained during the experiment.
+
+\begin{figure*}[!h]
+    \raggedright
+    \includegraphics[width=6cm]{images/hdi_graphs/actual_velocities.png}
+    %\includegraphics[width=6cm]{images/xr_graphs/freq_hdi.png}
+    \includegraphics[width=6cm]{images/hdi_graphs/desired_velocities.png}
+    \caption{Flight Timeline with Gesture Piloting.}
+    \label{fig:responsiveness}
+\end{figure*}
+
+
+\subsubsection{Command-Annotated Trajectory Graphs}
+
+In Figure \ref{fig:responsiveness}, we take a closer look at the interactions between a drone's trajectory and the signs identified at that particular instance. The speed instructions are overlaid on the actual velocities (in green). Each instruction is plotted according to the timestamp at which it was generated [Appendix C, Figure \ref{code:speed_plotting}].
+
+\begin{figure*}[!h]
+    \raggedright
+    \includegraphics[width=6cm]{images/hdi_graphs/left_right_signs.png}
+    %\includegraphics[width=6cm]{images/xr_graphs/freq_hdi.png}
+    \includegraphics[width=6cm]{images/hdi_graphs/left_right_slides.png}
+    \caption{Flight Timeline with Annotated Hand Signs.}
+    \label{fig:desiredvelocities}
+\end{figure*}
+
+
+% \begin{figure*}[!h]
+%     \raggedright
+%     \includegraphics[width=12cm]{images/hdi_graphs/Expected_Velocities_compressed.png} 
+%     \caption{Flight Timeline with Gesture Piloting.}
+% \end{figure*}
+    
+    
+\pagebreak
+\subsection{Discussion}
+
+
+    % Comment on the differences discovered in the literature review chapter. Between authors, definitions, and/or theories. Why are they different?
+    % Comment on the differences between the case studies or the collected data. Examine why differences exist.
+    % Comment on how the theories studied in the literature review were applied (or not) in the case studies or supported (or not) in the data collected.
+    % Discuss the Research Questions
+    % Evaluate the objectives
+    % Discuss the overall dissertation aim
+
+% The discussion chapter, by definition, is an interconnection and debate between the various sections in the dissertation. It should include your thoughts and recommendations, and be backed up by a limited number of citations. The discussion chapter may operate in parallel to the literature review chapter. It may follow the same order of topics. It will also point out the limitations, exceptions, and exclusions from the research.
+
+\subsubsection{Authors, definitions, theories}
+
+While Chang Liu et al. focus on outdoor datasets for single large drones, this work looks towards interacting specifically on the drone's position. Such a specific usecase of hand-following seems to be relatively rare in the literature. In fact, Tezza et al. [\textbf{CITE}] remain sceptical as to whether this method might be the best approach to applications that require fine and precise control, as they pose the problems of higher latency and lower accuracy than other methods such as a remote controller. This vision is coerced with other members of the HDI community, which we see in the types of datasets that are developed [\textbf{RWorks}]. These datasets focus on signaling events to the drone, instead of direct piloting. [\textbf{CITE}][\textbf{CITE}]
+
+\subsubsection{Observed discrepancies}
+
+\begin{marginfigure}%
+  \includegraphics[width=5cm]{images/hdi_discussion/mediapipe-speeds.png}
+  \caption{On-device inference speeds for MediaPipe's hand landmark model, taken from [\textbf{CITE}]}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+The results from this experiment seem to be rapid, with a latency of \textbf{a few milliseconds}. This is in large part thanks to MediaPipe Hands algorithm [\textbf{CITE}]. This algorithm is relatively new, and demonstrates real-time inference capabilities, with a maximum inference of 36ms for hand landmarks. This performance is evidently far different from that of the perception pipeline developed here around the Mediapipe framework, with different equipment. Using \ref{fig:responsiveness}, we can attempt to measure the responsiveness at about \textbf{10 ms}.
+
+\subsubsection{Return to Research Questions}
+We return to the research questions of this section:
+\begin{itemize}
+    \item Are there any discernable differences in the use of the two flight modes?
+    \item Are these flight modes reliable?
+    \item What are effective ways to examine the operator's interactions with the drone?
+\end{itemize}
+
+To recapitulate, these three questions were investigated through graphed results: the Trajectory graphs, the Timeline graphs and the Command-Annotated Trajectories. These three approaches aim to give a large overview of this experiment, specifically through axes of Flight Accuracy, Flight Latency and Piloting Effectiveness.
+
+\begin{itemize}
+    \item The accuracy of flight is perhaps not investigated at length. The flight is considerably acurate in position update mode, despite having a particular jerkiness about it. It is possibly due to hand signals, as can be observed in \ref{}The drone drifts considerably more in velocity update mode, yet this behaviour is to be expected.
+    \item Are these flight modes reliable?
+    \item What are effective ways to examine the operator's interactions with the drone?
+\end{itemize}
+
+    % Discuss the Research Questions
+    % Evaluate the objectives
+    % Discuss the overall dissertation aim
+    
+When using the ‘GRAB’ command, as the behaviour is not as smooth as expected. 
+
+The drone controller used in this chapter is a \textbf{position controller} for moving drones in three axes based on an absolute position. 
+
+Rate controllers, much akin to drone dynamics, and much less limiting in terms of executing figures, agile flight, and in general, more complex performances. 
+
+\begin{marginfigure}%
+  \includegraphics[width=5cm]{images/hdi_discussion/photos-drone.jpg}
+  \caption{A usecase of HDI that has been incorporated in commercial drones}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+A study of rate controllers on the Crazyflie is a vital step for going beyond onboard trajectory generation, in the case of tasks that require split-second reactions: freefall recovery for instance. 
+
+This project is created to make a push in the area of the gesture-controlled drones. The novelty of the approach lies in the ability to add new gestures or change old ones quickly. This is made possible thanks to MediaPipe Hands. It works incredibly fast, reliably, and ready out of the box, making gesture recognition very fast and flexible to changes.
+
+
+\subsection{Extensions}
+
+This experiment has offered a way to approach hand-drone interaction. Other approaches can offer a fuller exploration of the operator's ease in controlling the drone, by examining the \textbf{frequency at which different hand signals} are used.
+
+As the operator controls the drone by sight, it is possible for them to make minute readjustments. As a result, there is a place for intuition when giving commands to the drone.
+
+It might also be possible to explore instances where the operator does not look at the drone. Without visual feedback, this could give better hints as to the controller's effectiveness subject to clear hand commands.
+
+
+
+% \subsubsection{C. Extensions} 
+% BCI Controller.
+
+
+% BCI:      (a) What we did in 2h doesn't have any results.
+%           (b) We cannot replicate this. We do not understand this.
+% \subsection{Brain Swarm Controller}
+% \subsubsection{EEG Interface}
+% \subsubsection{Communication Protocol}
+% \subsubsection{Experimentation}
+
+% FLIGHT BOARD:      (a) This is not a HDI
+%                   (b) Not Many Thesis sections were on this.
+
+% \subsection{Flight Board}
+% \subsubsection{System Overview}
+% \subsubsection{Deep Learning 3D Pose Estimation}
+% \subsubsection{Data Streaming Procedure}
+% \subsubsection{Experimentation}
+
+% %%%%%%%%%% REMOVING THIS SECTION IN THE FIRST DRAFT !!!!
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Mixed Reality Controller}
+% \color{ForestGreen} 
+
+% % DOMAIN DEFINED IN RELATED WORKS.
+
+% % HOST PC SENDS COMMANDS TO THE DRONE.
+% % Subsections:     (a) 2 PCs: 1 Generates the Environment.
+% %                     (b) Data Flow Into and From Real World
+% %                         (d) Tools to Interface with State Machines
+% %                           (e) Drone Visuals
+% %                             (f) Creating 
+% % Details on the Communication Protocol Used.
+% % i.e. ROS Stream.
+% \color{black}
+
+
+\pagebreak
+\section{Mixed Reality Interface}
+
+Explanation here with a footnote\footnote{Project repository available at https://github.com/ThomasCarstens/Service\_Drones\_Thesis.git, Youtube video at:  https://youtu.be/wn5rsQ-XPBA }  
+\subsection{System Overview}
+
+A mixed reality interface serves as the connecting element between a physical drone and its virtual equivalent. This section documents the design of a mixed reality environment. 
+
+\begin{figure*}[h]
+    \raggedright
+    %\includegraphics[width=3.5cm]{images/chore_pictures/hand_mode/3d.png}
+    \includegraphics[width=11cm]{images/xr_system/xr_overview.png}
+    \caption{Parts of system included in \gls{MR} flight.}
+\end{figure*}
+
+\subsection{Technologies used}
+
+\subsubsection{Virtual Environment}
+
+Unity3D is a popular game engine which offers the game simulations for the virtual environment. It is set up as the virtual companion to the Flight Arena. 
+
+The first objective of the virtual environment is to be a graphical interface. The priority of the virtual reality is therefore set on rendering capabilities, and the ability to obtain camera information in this environment.
+
+\begin{figure*}[h]
+    \raggedright
+    %\includegraphics[width=3.5cm]{images/chore_pictures/hand_mode/3d.png}
+    \includegraphics[width=11cm]{images/xr_system/xr_topview.png}
+    \caption{Parts of system included in XR flight.}
+\end{figure*}
+
+
+\subsubsection{Network Interface}
+ROS Sharp [9] is a set of open source software libraries and tools in C# for communicating with ROS from .NET applications, in particular Unity.
+
+\subsection{Event Sharing}
+
+\subsubsection{Proposed Workflow for Mixed Reality Collisions}
+
+The link between the real and the mixed reality is designed with the following core capabilities:
+\begin{itemize}
+    \item Transmitting the pose of a real drone into a virtual environment.
+
+    
+    \item Transmitting an event between the physical and the virtual environment.
+
+\end{itemize}
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=11cm]{images/xr_system/collision_workflow.png}
+    \caption{Proposed Workflow for Mixed Reality Collisions}
+\end{figure*}
+
+Further work might extend these two elements to specific applications such as tracing trajectories for a drone from within a virtual environment. In this section, we demonstrate that the solution that was adopted covers the first top two elements.
+
+A Network Interface is used for the two objectives: injecting pose messages into the game engine and retrieving event data to be sent to the ROS Task Manager.
+An Event Detection is triggered within the game engine when a particular condition is met, and it then publishes the corresponding message.
+
+\subsubsection{A Network Interface for Mixed Reality Event Sharing}
+
+\begin{marginfigure}%
+  \includegraphics[width=6cm]{images/xr_graphs/network_in_system.png}
+  \caption{Design of the network interface.}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+The Network Interface is used for the two objectives: injecting pose messages into the game engine and retrieving event data.
+
+
+\subsubsection{An Event Stream Using this Network Interface}
+
+\begin{marginfigure}%
+  \includegraphics[width=5cm]{images/xr_graphs/collision_in_system.png}
+  \caption{Design of the event streaming interface.}
+  \label{fig:marginfig}
+\end{marginfigure}
+
+The Message Stream communicates the event data. 
+
+It includes different datatypes, from strings to pose data. 
+
+
+
+\subsection{Experimentation}
+
+This experiment seeks to explore two questions.
+
+\begin{itemize}
+    \item can an interaction be modelled between a drone and a virtual object?
+    \item What are the limitations to performance in such a system?
+
+\end{itemize}
+
+
+To do this, an experiment is designed for a collision between a drone and a virtual object.
+
+
+
+
+\subsubsection{Methodology}
+% PRESENT THE ENVIRONMENT, AND THE AGENTS.
+
+The experiment is set up to demonstrate a collision between a drone and a virtual body, and then to examine the performance of such a system.
+A single drone is flown in the Flight Arena and it is virtualised as the drone agent. Likewise, a bot agent flies a trajectory in a game Engine. When the drone and the bot collide, the drone is designed to react, by flying a pre-programmed spiral trajectory. 
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=12cm]{images/xr_graphs/collision_outline.png}
+    \caption{Collision setup as an Event Trigger}
+\end{figure*}
+
+We can answer the performance question by investigating the lag time between the moment of collision and the moment the drone reacts. We choose the moment of a Virtual Collision because it registers a collision between the drone agent, previously injected, and the bot agent.
+
+\begin{figure*}[h]
+    \raggedright
+    \includegraphics[width=11cm]{images/xr_graphs/collision_timestamp.png}
+    \caption{Calculation of Collision Lag Timer}
+\end{figure*}
+
+This will require two separate data loggers: one will log the timestamp and pose during the collision, and the other will log the timestamp of the State Change from within the Task Manager. 
+
+
+    
+\underline{Virtual Agent}\\
+% PRESENT THE ENVIRONMENT, AND THE AGENTS.
+
+\underline{Camera Views}
+
+\begin{figure*}[!h]
+    \raggedright
+    \includegraphics[width=13cm]{images/xr_pres.png}
+    \caption{Video feeds of the test environment}
+\end{figure*}
+
+\begin{figure*}[!h]
+    \raggedright
+    \includegraphics[width=13cm]{images/choreography/trajectory_diagram.png}
+    \caption{State Machine Implementation for Collision Experiment.}
+\end{figure*}
+
+\pagebreak
+\subsubsection{Results}
+
+\begin{figure*}[!h]
+    \raggedright
+    \includegraphics[width=12cm]{images/hdi_graphs/timelineview.png}
+    \includegraphics[width=12cm]{images/hdi_graphs/front.png}
+    % \includegraphics[width=6cm]{images/hdi_graphs/timelineview.png}
+    % \includegraphics[width=6cm]{images/hdi_graphs/front.png}
+    \caption{Collision Graphs: Z position across time (a) and across x axis (b).}
+\end{figure*}
+
+\begin{figure*}[!h]
+    \raggedright
+    % \includegraphics[width=12cm]{images/hdi_graphs/timelineview.png}
+    % \includegraphics[width=12cm]{images/hdi_graphs/front.png}
+    \includegraphics[width=6cm]{images/hdi_graphs/timelineview.png}
+    \includegraphics[width=6cm]{images/hdi_graphs/front.png}
+    \caption{Collision Graphs: Z position across time (a) and across x axis (b).}
+\end{figure*}
+
+
+\subsubsubsection{Latency Calculations}
+
+Three collisions in particular are investigated, occurring 15 seconds from each other.
+
+Each collision latency is calculated according to the method set in the methodology. The exact collision latency code is available in Appendix A [Section \ref{code:latency_calculation}].
+
+\begin{figure*}[!h]
+    \raggedright
+    \includegraphics[width=8cm]{images/xr_graphs/latency_sm.png}
+    \includegraphics[width=6cm]{images/xr_graphs/freq_hdi.png}
+    \caption{Resulting Latency of System with Time.}
+\end{figure*}
+
+The "Publishing Frequency of Drone Poses" is created by measuring the output frequencies of a rosbag. This is done using the ROS tool for measuring transmission rates, rostopic hz. [Appendix C, Figure \ref{code:pubfreq_plotting}].
+
+\section{Evaluation}
+\begin{marginfigure}%[h]
+    \raggedright
+    \includegraphics[width=6cm]{images/xr_graphs/crazyswarm_latency_comparison.PNG}
+    \caption{Latency calculations for the Crazyswarm Project.}
+\end{marginfigure}
+
+\section{Conclusion}
+%\textbf{~2 pages}
+
+% \begin{itemize}
+%     \item An overview of the project
+%     \item What did you learn from the project that could benefit others
+%     \item What can you do that you could not before?
+%     \item What would be the required steps that had to be removed from the scope? 
+% \end{itemize}
+
+% \subsection{Applications and use cases}
+% Gesture piloting can be a work of art for choreographies.
+% It can also be used in controlling swarms for further development.
+
+% \subsection{Limitations}
+% All in all, the position control mode is quite restrictive.
+% Also, it is hard to look in two different directions: at the drone and at the screen.
+
+% \subsection{Future works}
+% A proper integration of this work will require transitioning the ROS Node to allow for both hand control and swarm functionalities.
+
+This chapter presents a streaming architecture for piloting UAVs using a webcam, and various forays into Human-Drone interactions. This architecture, which makes use of the drones’ command architecture, but also of a shared network, has lent itself to integrating various inputs – in this case webcam images. The output of this exercise is evident in the precision of the drones’ movement, as it was noticed in the various visualisations of the data.
+
+However, the drone controller used in this chapter is a position controller for moving drones in three axes based on an absolute position. Future work will experiment with rate controllers, much akin to drone dynamics, and much less limiting in terms of executing figures, agile flight, and in general, more complex performances. A study of rate controllers on the Crazyflie is a vital step for going beyond onboard trajectory generation, in the case of tasks that require split-second reactions: freefall recovery for instance. This limit was already detected in this section when using the ‘GRAB’ command, as the behaviour is not as smooth as expected. 
+
+Another limit is allow for both hand control and swarm functionalities. After all, such a functionality would have an interesting application: for the developers themselves to control the swarm, as an additional layer of interactivity.
+Further work will look to integrate this functionality in the Crazyswarm framework for other developers to benefit from. With an estimated increase of 20\% per year in the number of papers reported using Crazyswarm, this framework is expanding in popularity, and this functionality would make a neat addition to the HCI community. 
+
+All in all, this work has come to demonstrate that a swarm setup can be rather easily adapted to human-drone research, and despite the failings of the approach, it succeeds in providing an end-to-end experience for the pilot, becoming an attraction in the laboratory. Multiple points can be improved, but further work will seek to reattach this project to the UAV community.
+

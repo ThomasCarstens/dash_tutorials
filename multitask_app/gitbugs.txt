@@ -1,0 +1,11 @@
+
+
+
+
+remote: error: Trace: 3469943ac04c3d99158478d7cdc8d74930d002947e94526df9443de936546cab
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File DJI_0202.MP4 is 141.08 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File IMG_5830.MOV is 182.20 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File VID_20210625_154431_0084.MP4 is 600.00 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: File test_orbital.MP4 is 560.00 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
