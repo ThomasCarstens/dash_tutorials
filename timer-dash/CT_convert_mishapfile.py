@@ -7,14 +7,14 @@ import pandas as pd
 #OUTPUT: .txt (manually change to .csv) readable as a df.
 #NEXT STEPS: timer-dash/CT_finding_sm_collision_data.py
 
-#bot2bot_botpath = '/home/txa/Documents/data/eval_tests/bot2bot/pos_bot_bot2bot.txt'
+#bot2bot_botpath = '/home/txa/Documents/data/droneData_alliantech/eval_tests/bot2bot/pos_bot_bot2bot.txt'
 bot2bot_dronepath = '/home/txa/Documents/data/droneData_alliantech/xr_processing/1630745389NinjaskSphere(UnityEngine.Transform)gameobject.txt'
 bot2bot_botpath = '/home/txa/Documents/data/droneData_alliantech/xr_processing/1630745389DragonSphere(UnityEngine.Transform)gameobject.txt'
 output_drone_path = "/home/txa/Documents/data/droneData_alliantech/xr_processing/df_drone_pos.txt"
 output_bot_path = "/home/txa/Documents/data/droneData_alliantech/xr_processing/df_bot_pos.txt"
 
 # INPUT file
-#df_xr_version = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/1630749025Dragon.txt', decimal=',')
+#df_xr_version = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/1630749025Dragon.txt', decimal=',')
 with open(bot2bot_botpath, "r") as f:
     notes = f.readlines()
 

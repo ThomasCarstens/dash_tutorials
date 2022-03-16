@@ -11,7 +11,7 @@ import os
 print(os. getcwd())
 
 
-df_chore= pd.read_csv('~/Documents/data/eval_tests/tf_chore.csv')
+df_chore= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_chore.csv')
 
 traj_graph = go.Figure()
 for id in range(3):
@@ -51,7 +51,7 @@ for id in range(3):
     _3d_traj_graph.update_traces(marker=dict(size=1),
                       selector=dict(mode='markers'))
 
-with open("notes/notes_chore.txt", "r") as f:
+with open("/home/txa/Documents/data/droneData_alliantech/in-vivo/analysis_notes.txt", "r") as f:
     notes = f.readlines()
 #html.Br()#
 
@@ -281,15 +281,15 @@ df_dropdown = pd.DataFrame({
 
 
 ## TF
-df_chore= pd.read_csv('~/Documents/data/eval_tests/tf_chore.csv')
-df_hover= pd.read_csv('~/Documents/data/eval_tests/tf_hover.csv')
-df_2d1a= pd.read_csv('~/Documents/data/eval_tests/tf_2d1a.csv')
-df_3d1a= pd.read_csv('~/Documents/data/eval_tests/tf_3d1a.csv')
-df_xr1= pd.read_csv('~/Documents/data/eval_tests/tf_xr1.csv')
+df_chore= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_chore.csv')
+df_hover= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_hover.csv')
+df_2d1a= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_2d1a.csv')
+df_3d1a= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_3d1a.csv')
+df_xr1= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_xr1.csv')
 
-df_ht1= pd.read_csv('~/Documents/data/eval_tests/tf_ht1.csv')
+df_ht1= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_ht1.csv')
 ## CAMERA
-df_cam3_xr1 = pd.read_csv('~/Documents/data/eval_tests/cam3_xr1.csv')
+# df_cam3_xr1 = pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/cam3_xr1.csv')
 
 # df_traj = pd.DataFrame({
 

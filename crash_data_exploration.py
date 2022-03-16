@@ -40,7 +40,7 @@ def fita2blen(f_val, x_desired):
     return interp
 
 ########### DATA ######################3
-# ~/Documents/data/vendredi_auto$ ls
+# ~/Documents/data/droneData_alliantech/vendredi_auto$ ls
 
 # @ 16:02                                                  # @ 16:13 # Drone flown straight, weak, drops gradually.
 
@@ -69,29 +69,29 @@ def fita2blen(f_val, x_desired):
 # log_184_2021-7-23-16-11-24_vehicle_gps_position_0.csv    log_187_2021-7-23-16-24-58_vehicle_gps_position_0.csv
 # log_184_2021-7-23-16-11-24_vehicle_local_position_0.csv  log_187_2021-7-23-16-24-58_vehicle_local_position_0.csv
 
-crashfile_1_adc = pd.read_csv("~/Documents/data/vendredi_auto/log_182_2021-7-23-16-02-04_adc_report_0.csv")
+crashfile_1_adc = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_182_2021-7-23-16-02-04_adc_report_0.csv")
 
 
-crashfile_1_gps = pd.read_csv("~/Documents/data/vendredi_auto/log_182_2021-7-23-16-02-04_vehicle_local_position_0.csv")
-crashfile_2_gps = pd.read_csv("~/Documents/data/vendredi_auto/log_183_2021-7-23-16-06-18_vehicle_local_position_0.csv")
-crashfile_3_gps = pd.read_csv("~/Documents/data/vendredi_auto/log_184_2021-7-23-16-11-24_vehicle_local_position_0.csv")
-crashfile_4_gps = pd.read_csv("~/Documents/data/vendredi_auto/log_185_2021-7-23-16-13-28_vehicle_local_position_0.csv")
-crashfile_5_gps = pd.read_csv("~/Documents/data/vendredi_auto/log_186_2021-7-23-16-14-40_vehicle_local_position_0.csv")
-crashfile_6_gps = pd.read_csv("~/Documents/data/vendredi_auto/log_187_2021-7-23-16-24-58_vehicle_local_position_0.csv")
+crashfile_1_gps = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_182_2021-7-23-16-02-04_vehicle_local_position_0.csv")
+crashfile_2_gps = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_183_2021-7-23-16-06-18_vehicle_local_position_0.csv")
+crashfile_3_gps = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_184_2021-7-23-16-11-24_vehicle_local_position_0.csv")
+crashfile_4_gps = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_185_2021-7-23-16-13-28_vehicle_local_position_0.csv")
+crashfile_5_gps = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_186_2021-7-23-16-14-40_vehicle_local_position_0.csv")
+crashfile_6_gps = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_187_2021-7-23-16-24-58_vehicle_local_position_0.csv")
 
-crashfile_1_acc_0 = pd.read_csv("~/Documents/data/vendredi_auto/log_182_2021-7-23-16-02-04_sensor_accel_0.csv")
-crashfile_2_acc_0 = pd.read_csv("~/Documents/data/vendredi_auto/log_183_2021-7-23-16-06-18_sensor_accel_0.csv")
-crashfile_3_acc_0 = pd.read_csv("~/Documents/data/vendredi_auto/log_184_2021-7-23-16-11-24_sensor_accel_0.csv")
-crashfile_4_acc_0 = pd.read_csv("~/Documents/data/vendredi_auto/log_185_2021-7-23-16-13-28_sensor_accel_0.csv")
-crashfile_5_acc_0 = pd.read_csv("~/Documents/data/vendredi_auto/log_186_2021-7-23-16-14-40_sensor_accel_0.csv")
-crashfile_6_acc_0 = pd.read_csv("~/Documents/data/vendredi_auto/log_187_2021-7-23-16-24-58_sensor_accel_0.csv")
+crashfile_1_acc_0 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_182_2021-7-23-16-02-04_sensor_accel_0.csv")
+crashfile_2_acc_0 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_183_2021-7-23-16-06-18_sensor_accel_0.csv")
+crashfile_3_acc_0 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_184_2021-7-23-16-11-24_sensor_accel_0.csv")
+crashfile_4_acc_0 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_185_2021-7-23-16-13-28_sensor_accel_0.csv")
+crashfile_5_acc_0 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_186_2021-7-23-16-14-40_sensor_accel_0.csv")
+crashfile_6_acc_0 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_187_2021-7-23-16-24-58_sensor_accel_0.csv")
 
-crashfile_1_acc_1 = pd.read_csv("~/Documents/data/vendredi_auto/log_182_2021-7-23-16-02-04_sensor_accel_1.csv")
-crashfile_2_acc_1 = pd.read_csv("~/Documents/data/vendredi_auto/log_183_2021-7-23-16-06-18_sensor_accel_1.csv")
-crashfile_3_acc_1 = pd.read_csv("~/Documents/data/vendredi_auto/log_184_2021-7-23-16-11-24_sensor_accel_1.csv")
-crashfile_4_acc_1 = pd.read_csv("~/Documents/data/vendredi_auto/log_185_2021-7-23-16-13-28_sensor_accel_1.csv")
-crashfile_5_acc_1 = pd.read_csv("~/Documents/data/vendredi_auto/log_186_2021-7-23-16-14-40_sensor_accel_1.csv")
-crashfile_6_acc_1 = pd.read_csv("~/Documents/data/vendredi_auto/log_187_2021-7-23-16-24-58_sensor_accel_1.csv")
+crashfile_1_acc_1 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_182_2021-7-23-16-02-04_sensor_accel_1.csv")
+crashfile_2_acc_1 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_183_2021-7-23-16-06-18_sensor_accel_1.csv")
+crashfile_3_acc_1 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_184_2021-7-23-16-11-24_sensor_accel_1.csv")
+crashfile_4_acc_1 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_185_2021-7-23-16-13-28_sensor_accel_1.csv")
+crashfile_5_acc_1 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_186_2021-7-23-16-14-40_sensor_accel_1.csv")
+crashfile_6_acc_1 = pd.read_csv("~/Documents/data/droneData_alliantech/vendredi_auto/log_187_2021-7-23-16-24-58_sensor_accel_1.csv")
 
 #SELECT DATA
 # FIMI FLIGHT.
@@ -432,10 +432,10 @@ if __name__ == '__main__':
 # log_69_2021-6-25-12-41-44_sensor_accel_0.csv  log_69_2021-6-25-12-41-44_vehicle_gps_position_0.csv
 # log_69_2021-6-25-12-41-44_sensor_accel_1.csv  log_69_2021-6-25-12-41-44_vehicle_local_position_0.csv
 # log_69_2021-6-25-12-41-44_sensor_gps_0.csv
-#log_adc_parking = pd.read_csv("~/Documents/data/square_parking/log_69_2021-6-25-12-41-44_adc_report_0.csv")
+#log_adc_parking = pd.read_csv("~/Documents/data/droneData_alliantech/square_parking/log_69_2021-6-25-12-41-44_adc_report_0.csv")
 
 ### VALUES IN FOREST CLEARING (WITH GPS)
-# ~/Documents/data/ciel_nuageux/
+# ~/Documents/data/droneData_alliantech/ciel_nuageux/
 # log_76_2021-6-25-14-51-38_adc_report_0.csv              log_77_2021-6-25-15-00-26.ulg
 # log_76_2021-6-25-14-51-38_sensor_accel_0.csv            log_77_2021-6-25-15-00-26_vehicle_gps_position_0.csv
 # log_76_2021-6-25-14-51-38_sensor_accel_1.csv            log_77_2021-6-25-15-00-26_vehicle_local_position_0.csv

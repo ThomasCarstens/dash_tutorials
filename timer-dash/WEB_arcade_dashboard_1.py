@@ -58,7 +58,7 @@ for id in range(3):
     # _3d_traj_graph.update_traces(marker=dict(size=1),
     #                   selector=dict(mode='markers'))
 
-with open("notes/notes_chore.txt", "r") as f:
+with open("/home/txa/Documents/data/droneData_alliantech/in-vivo/analysis_notes.txt", "r") as f:
     notes = f.readlines()
 #html.Br()#
 
@@ -232,8 +232,8 @@ df_dropdown = pd.DataFrame({
                         'CHORE_AND_XR': [
                             #tf_chore.csv //ELSE https://drive.google.com/file/d/1x2qqvYr9H7e2I3EXjBfKjJrhaLqA59aA/preview
                             'df_xrchore', 
-                            # VIRTUAL DATA. #/home/txa/Documents/data/eval_tests/xr_chore/1630749025Dragon.txt
-                            # /home/txa/Documents/data/eval_tests/xr_chore/1630749025Ninjask.txt
+                            # VIRTUAL DATA. #/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/1630749025Dragon.txt
+                            # /home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/1630749025Ninjask.txt
                             #Chore Video
                             'https://drive.google.com/file/d/1tDETo4dPgGq81jFtJDxbsVOX12sX_0H2/preview', 
                             #State Machine.
@@ -243,8 +243,8 @@ df_dropdown = pd.DataFrame({
                         'COLLISIONS': [
                             #tf_chore.csv //ELSE https://drive.google.com/file/d/1x2qqvYr9H7e2I3EXjBfKjJrhaLqA59aA/preview
                             'df_hdi_collisions', 
-                            # VIRTUAL DATA. #/home/txa/Documents/data/eval_tests/xr_chore/1630749025Dragon.txt
-                            # /home/txa/Documents/data/eval_tests/xr_chore/1630749025Ninjask.txt
+                            # VIRTUAL DATA. #/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/1630749025Dragon.txt
+                            # /home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/1630749025Ninjask.txt
                             #Chore Video
                             'https://drive.google.com/file/d/1tDETo4dPgGq81jFtJDxbsVOX12sX_0H2/preview', 
                             #State Machine.
@@ -254,8 +254,8 @@ df_dropdown = pd.DataFrame({
                         'BOT2BOT_COLLISIONS': [
                             #tf_chore.csv //ELSE https://drive.google.com/file/d/1x2qqvYr9H7e2I3EXjBfKjJrhaLqA59aA/preview
                             'df_bot2bot', 
-                            # VIRTUAL DATA. #/home/txa/Documents/data/eval_tests/xr_chore/1630749025Dragon.txt
-                            # /home/txa/Documents/data/eval_tests/xr_chore/1630749025Ninjask.txt
+                            # VIRTUAL DATA. #/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/1630749025Dragon.txt
+                            # /home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/1630749025Ninjask.txt
                             #Chore Video
                             'https://drive.google.com/file/d/1tDETo4dPgGq81jFtJDxbsVOX12sX_0H2/preview', 
                             #State Machine.
@@ -379,18 +379,18 @@ df_ht1= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_ht1.csv
 ## CAMERA
 url_cam3_xr1 = 'https://drive.google.com/file/d/1nMD1hMEF8oU3a3u71dxpSC-W8x1NmBvW/view?usp=sharing'
 url_cam3_xr1 = 'https://drive.google.com/file/d/1GvaVIhLfAs4v_dQsZPFRvw5s5v5cq6xs/view?usp=sharing'
-#df_cam3_xr1 = pd.read_csv('~/Documents/data/eval_tests/cam3_xr1.csv')
+#df_cam3_xr1 = pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/cam3_xr1.csv')
 #df_cam3_xr1 = convert2df(url_cam3_xr1)
 url_xrchore = 'https://drive.google.com/file/d/1tDETo4dPgGq81jFtJDxbsVOX12sX_0H2/view?usp=sharing'
 url_xrchore = 'https://drive.google.com/file/d/1GvaVIhLfAs4v_dQsZPFRvw5s5v5cq6xs/view?usp=sharing'
 output_bot_path = 'https://drive.google.com/file/d/1GvaVIhLfAs4v_dQsZPFRvw5s5v5cq6xs/view?usp=sharing'
-#df_xrchore = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/xr_chore.csv')
+#df_xrchore = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/xr_chore.csv')
 #df_xrchore = convert2df(url_xrchore)
 
 ## DATA INEXISTENT
-#df_xr_version = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/demofile2.csv', sep=',')
+#df_xr_version = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/demofile2.csv', sep=',')
 #print(list(df_xr_version.columns.values))
-#df_xr_drone = pd.read_csv('/home/txa/Documents/data/eval_tests/xr_chore/drone_xr_pos.csv', sep=',')
+#df_xr_drone = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/drone_xr_pos.csv', sep=',')
 
 #df_hdi_collisions = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/df_hdi_collisions.csv', sep=',')
 # df_hdi2_collisions = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/eval_tests/xr_chore/hdi_2/df_hdi2_collisions.csv', sep=',')

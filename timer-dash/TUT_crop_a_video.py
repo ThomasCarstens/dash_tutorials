@@ -18,10 +18,10 @@ import cv2
 # # bottom = 360+top_drift
 # # left = left_drift  # Sample values.
 
-# input_video = cv2.VideoCapture('/home/txa/Documents/data/eval_tests/videos/trimmed/dragon_trim.mp4')
+# input_video = cv2.VideoCapture('/home/txa/Documents/data/droneData_alliantech/eval_tests/videos/trimmed/dragon_trim.mp4')
 
 # fourcc = cv2.VideoWriter_fourcc(*'XVID')
-# output_movie = cv2.VideoWriter('/home/txa/Documents/data/eval_tests/videos/dragon.avi', fourcc, 30, (450, 360))
+# output_movie = cv2.VideoWriter('/home/txa/Documents/data/droneData_alliantech/eval_tests/videos/dragon.avi', fourcc, 30, (450, 360))
 
 # while True:
 #     ret, frame = input_video.read()
@@ -44,7 +44,7 @@ import cv2
 # import cv2
 
 # # Open the video
-# cap = cv2.VideoCapture('/home/txa/Documents/data/eval_tests/videos/trimmed/human_bot_drone.mp4')
+# cap = cv2.VideoCapture('/home/txa/Documents/data/droneData_alliantech/eval_tests/videos/trimmed/human_bot_drone.mp4')
 
 # # Initialize frame counter
 # cnt = 0
@@ -58,7 +58,7 @@ x,y,h,w = 0,400,400,400
 
 # output
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('/home/txa/Documents/data/eval_tests/videos/result.avi', fourcc, fps, (w, h))
+out = cv2.VideoWriter('/home/txa/Documents/data/droneData_alliantech/eval_tests/videos/result.avi', fourcc, fps, (w, h))
 # fourcc = cv2.FOURCC(*'XVID')  # cv2.VideoWriter_fourcc() does not exist
 # videoOut = cv2.VideoWriter("output.avi", fourcc, 20.0, (640, 480))
 

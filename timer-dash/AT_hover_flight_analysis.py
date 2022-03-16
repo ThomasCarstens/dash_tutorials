@@ -24,7 +24,7 @@ df_dropdown = pd.DataFrame({
 
                         'CHOREOGRAPHY': [
                             #tf_chore.csv //ELSE https://drive.google.com/file/d/1x2qqvYr9H7e2I3EXjBfKjJrhaLqA59aA/preview
-                            '~/Documents/data/eval_tests/tf_chore.csv', 
+                            '~/Documents/data/droneData_alliantech/eval_tests/tf_chore.csv', 
                             #Chore Video
                             'https://drive.google.com/file/d/1tDETo4dPgGq81jFtJDxbsVOX12sX_0H2/preview', 
                             #State Machine.
@@ -35,7 +35,7 @@ df_dropdown = pd.DataFrame({
 
                         'HOVERTEST': [
                             #ELSE https://drive.google.com/file/d/107Qt78KKNubyInvjrD7xD_4C4Z0lEi9V/preview
-                            '~/Documents/data/eval_tests/tf_hover.csv', 
+                            '~/Documents/data/droneData_alliantech/eval_tests/tf_hover.csv', 
                             'https://drive.google.com/file/d/1GJBwi408tLAaQ2nTPaKib4t8WmOV6k9H/preview', 
                             '', 
                             ''],
@@ -99,11 +99,11 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objs as go
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, suppress_callback_exceptions=True)
 
 
-df_chore= pd.read_csv('~/Documents/data/eval_tests/tf_chore.csv')
-df_chore_cmd= pd.read_csv('~/Documents/data/eval_tests/fo8commands.csv')
+df_chore= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_chore.csv')
+# df_chore_cmd= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/fo8commands.csv')
 
 
 #df_hovertest= pd.read_csv('~/Downloads/hovertest.csv')

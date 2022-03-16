@@ -7,13 +7,21 @@ import plotly.graph_objects as go
 import pandas as pd
 import datetime
 from dash.exceptions import PreventUpdate
-app = dash.Dash(__name__)
+# from flask_caching import Cache
+import os
 
+app = dash.Dash(__name__)
+# cache = Cache(app.server, config={
+#     # try 'filesystem' if you don't want to setup redis
+#     'CACHE_TYPE': 'filesystem',
+#     'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'redis://localhost:8050')
+# })
 # works now albeit jumpy
 # fixing the ranges of the graphs.
 # removing the colour bar
 # 2 / 20 / 500 works well
 # 3 / 20 / 500 better for acceleration
+# 3 / 50 / 200 slows down
 # trimby is creating a weird pattern
 # that's the colour's fault. needs consistency.
 
@@ -85,7 +93,7 @@ def template_graph_plot (minval, maxval, trimby):
 
     x_cf3, y_cf3, z_cf3, time_cf3 = zip(*clipped_cf3[range_cf3[0]:range_cf3[1]])
     x_cf4, y_cf4, z_cf4, time_cf4 = zip(*clipped_cf4[range_cf4[0]:range_cf4[1]])
-    print("len", len(x_cf4))
+    # print("len", len(x_cf4))
     #x_cf4 = x_cf4[min_data:max_data]
     
     template_graph = go.Figure()
@@ -114,7 +122,7 @@ def template_graph_plot (minval, maxval, trimby):
     rates_cf3 = fita2blen(rates, len(x_cf3))
 
     template_graph.add_trace(go.Scatter(x=x_cf3, y=y_cf3,
-                                mode='markers',
+                                mode='lines',
                                 name='Trace cf3',
                                 marker=dict(
                                     color=rates_cf3,
@@ -223,7 +231,7 @@ def traj_edit(speed, n, trim_factor, counter, button_clicked):
     if button_clicked is None:
         raise PreventUpdate
     else:
-        print (n)
+        # print (n)
         
         takeoff_val = 77441
         counter=takeoff_val+n*speed

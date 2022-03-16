@@ -1,10 +1,10 @@
 
 import pandas as pd
 
-df_log= pd.read_csv('/home/txa/Documents/data/DATA_zone_monitoring/03_12_58_log_message_0.csv')
-df_adc= pd.read_csv('/home/txa/Documents/data/DATA_zone_monitoring/03_12_58_adc_report_0.csv')
-df_gps= pd.read_csv('/home/txa/Documents/data/DATA_zone_monitoring/03_12_58_vehicle_local_position_0.csv')
-df_dht11_2 = pd.read_csv('/home/txa/Documents/data/DATA_zone_monitoring/DHT11_2.CSV', decimal=".", sep=',', index_col=False)
+df_log= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/03_12_58_log_message_0.csv')
+df_adc= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/03_12_58_adc_report_0.csv')
+df_gps= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/03_12_58_vehicle_local_position_0.csv')
+df_dht11_2 = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/DHT11_2.CSV', decimal=".", sep=',', index_col=False)
 
 print('len log:', len(df_log))
 print('len adc:', len(df_adc))

@@ -32,15 +32,15 @@ def butter_bandstop_filter(data, lowcut, highcut, fs, order=5):
 
 #np.where(a < 5, a, 10*a)
 
-path1 = '~/Documents/data/in-vivo/11_40/11_40_32_'
-path2 = '~/Documents/data/in-vivo/11_56/11_56_06_'
-path3 = '~/Documents/data/in-vivo/12_10/12_10_04_'
-path4 = '~/Documents/data/in-vivo/12_22/12_22_20_'
+path1 = '~/Documents/data/droneData_alliantech/in-vivo/11_40/11_40_32_'
+path2 = '~/Documents/data/droneData_alliantech/in-vivo/11_56/11_56_06_'
+path3 = '~/Documents/data/droneData_alliantech/in-vivo/12_10/12_10_04_'
+path4 = '~/Documents/data/droneData_alliantech/in-vivo/12_22/12_22_20_'
 
-df_traj1= pd.read_csv('~/Documents/data/in-vivo/11_40/11_40_32_vehicle_local_position_0.csv')
-df_traj2= pd.read_csv('~/Documents/data/in-vivo/11_56/11_56_06_vehicle_local_position_0.csv')
-df_traj3= pd.read_csv('~/Documents/data/in-vivo/12_10/12_10_04_vehicle_local_position_0.csv')
-df_traj4= pd.read_csv('~/Documents/data/in-vivo/12_22/12_22_20_vehicle_local_position_0.csv')
+df_traj1= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/11_40/11_40_32_vehicle_local_position_0.csv')
+df_traj2= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/11_56/11_56_06_vehicle_local_position_0.csv')
+df_traj3= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/12_10/12_10_04_vehicle_local_position_0.csv')
+df_traj4= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/12_22/12_22_20_vehicle_local_position_0.csv')
 
 ####################
 # PX4 ACCELERATION #

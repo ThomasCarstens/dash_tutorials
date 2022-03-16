@@ -6,10 +6,10 @@ from moviepy.config import get_setting
 from moviepy.tools import subprocess_call
 # start_time = (5*60)+40
 # end_time = (6*60)+10
-# ffmpeg_extract_subclip("/home/txa/Documents/data/eval_tests/videos/BotDrone.mkv", start_time, end_time, targetname="/home/txa/Documents/data/eval_tests/videos/BotDrone_trim.mp4")
+# ffmpeg_extract_subclip("/home/txa/Documents/data/droneData_alliantech/eval_tests/videos/BotDrone.mkv", start_time, end_time, targetname="/home/txa/Documents/data/droneData_alliantech/eval_tests/videos/BotDrone_trim.mp4")
 
 # fps = 60
-# folder = "/home/txa/Documents/data/eval_tests/videos/avoid_pics"
+# folder = "/home/txa/Documents/data/droneData_alliantech/eval_tests/videos/avoid_pics"
 # filename = "/home/txa/Documents/avoid.gif"
 # def gif_maker(filename, folder, fps, digits=300, bitrate= 4096):
 #     s = "frame" + "%02d" % (digits+300) + ".jpg"
@@ -24,7 +24,7 @@ from moviepy.tools import subprocess_call
 # gif_maker(filename, folder, fps, digits=6, bitrate= 4096)
 # filenames = []
 # for i in range (300, 601):
-#     filenames.append("/home/txa/Documents/data/eval_tests/videos/avoid_pics/frame"+str(i)+".jpg")
+#     filenames.append("/home/txa/Documents/data/droneData_alliantech/eval_tests/videos/avoid_pics/frame"+str(i)+".jpg")
 
 
 # import imageio
@@ -39,11 +39,11 @@ from moviepy.tools import subprocess_call
 ########## TIMESTAMPS
 ######################
 
-# CHORE_TRIM: /home/txa/Documents/data/eval_tests/videos/XR_chore.mkv
+# CHORE_TRIM: /home/txa/Documents/data/droneData_alliantech/eval_tests/videos/XR_chore.mkv
 # start_time = (4*60)
 # end_time = (4*60)+57
 
-# HDI_TRIM: /home/txa/Documents/data/eval_tests/videos/IntroHDI.mkv
+# HDI_TRIM: /home/txa/Documents/data/droneData_alliantech/eval_tests/videos/IntroHDI.mkv
 # start_time = (8*60)
 # end_time = (8*60)+18
 

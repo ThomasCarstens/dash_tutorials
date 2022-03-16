@@ -40,20 +40,20 @@ log_acc = pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-
 # log_77_2021-6-25-15-00-26_sensor_accel_0.csv            log_78_2021-6-25-15-23-54_vehicle_gps_position_0.csv
 # log_77_2021-6-25-15-00-26_sensor_accel_1.csv            log_78_2021-6-25-15-23-54_vehicle_local_position_0.csv
 # log_77_2021-6-25-15-00-26_sensor_gps_0.csv
-clearing01_log_adc = pd.read_csv("~/Documents/data/ciel_nuageux/log_76_2021-6-25-14-51-38_adc_report_0.csv")
-clearing02_log_adc = pd.read_csv("~/Documents/data/ciel_nuageux/log_77_2021-6-25-15-00-26_adc_report_0.csv")
-clearing03_log_adc = pd.read_csv("~/Documents/data/ciel_nuageux/log_78_2021-6-25-15-23-54_adc_report_0.csv")
+clearing01_log_adc = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_76_2021-6-25-14-51-38_adc_report_0.csv")
+clearing02_log_adc = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_77_2021-6-25-15-00-26_adc_report_0.csv")
+clearing03_log_adc = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_78_2021-6-25-15-23-54_adc_report_0.csv")
 
-clearing01_log_gps = pd.read_csv("~/Documents/data/ciel_nuageux/log_76_2021-6-25-14-51-38_vehicle_local_position_0.csv")
-clearing02_log_gps = pd.read_csv("~/Documents/data/ciel_nuageux/log_77_2021-6-25-15-00-26_vehicle_local_position_0.csv")
-clearing03_log_gps = pd.read_csv("~/Documents/data/ciel_nuageux/log_78_2021-6-25-15-23-54_vehicle_local_position_0.csv")
+clearing01_log_gps = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_76_2021-6-25-14-51-38_vehicle_local_position_0.csv")
+clearing02_log_gps = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_77_2021-6-25-15-00-26_vehicle_local_position_0.csv")
+clearing03_log_gps = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_78_2021-6-25-15-23-54_vehicle_local_position_0.csv")
 
-clearing01_log_acc01 = pd.read_csv("~/Documents/data/ciel_nuageux/log_76_2021-6-25-14-51-38_sensor_accel_0.csv")
-clearing01_log_acc02 = pd.read_csv("~/Documents/data/ciel_nuageux/log_76_2021-6-25-14-51-38_sensor_accel_1.csv")
-clearing02_log_acc01 = pd.read_csv("~/Documents/data/ciel_nuageux/log_77_2021-6-25-15-00-26_sensor_accel_0.csv")
-clearing02_log_acc02 = pd.read_csv("~/Documents/data/ciel_nuageux/log_77_2021-6-25-15-00-26_sensor_accel_1.csv")
-clearing03_log_acc01 = pd.read_csv("~/Documents/data/ciel_nuageux/log_78_2021-6-25-15-23-54_sensor_accel_0.csv")
-clearing03_log_acc02 = pd.read_csv("~/Documents/data/ciel_nuageux/log_78_2021-6-25-15-23-54_sensor_accel_1.csv")
+clearing01_log_acc01 = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_76_2021-6-25-14-51-38_sensor_accel_0.csv")
+clearing01_log_acc02 = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_76_2021-6-25-14-51-38_sensor_accel_1.csv")
+clearing02_log_acc01 = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_77_2021-6-25-15-00-26_sensor_accel_0.csv")
+clearing02_log_acc02 = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_77_2021-6-25-15-00-26_sensor_accel_1.csv")
+clearing03_log_acc01 = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_78_2021-6-25-15-23-54_sensor_accel_0.csv")
+clearing03_log_acc02 = pd.read_csv("~/Documents/data/droneData_alliantech/ciel_nuageux/log_78_2021-6-25-15-23-54_sensor_accel_1.csv")
 
 #label xaxis as (UTC(12-37-18) + timestamp// 10**9)
 #then convert old timestamps to add to new dataframe.

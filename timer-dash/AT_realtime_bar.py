@@ -47,8 +47,8 @@ def fita2blen(f_val, x_desired):
     interp = list(interp)
     return interp
 
-#df_log= pd.read_csv('/home/txa/Documents/data/DATA_zone_monitoring/10_05_12_log_message_0.csv')
-#df_log= pd.read_csv('/home/txa/Documents/data/DATA_zone_monitoring/10_06_37_log_message_0.csv')
+#df_log= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/10_05_12_log_message_0.csv')
+#df_log= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/10_06_37_log_message_0.csv')
 df_log= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/03_12_58_log_message_0.csv')
 df_adc= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/03_12_58_adc_report_0.csv')
 df_gps= pd.read_csv('/home/txa/Documents/data/droneData_alliantech/DATA_zone_monitoring/03_12_58_vehicle_local_position_0.csv')

@@ -12,13 +12,13 @@ print(os. getcwd())
 import numpy as np
 import math
 import plotly.express as px
-df_traj1= pd.read_csv('~/Documents/data/in-vivo/11_40/11_40_32_vehicle_local_position_0.csv')
-df_traj2= pd.read_csv('~/Documents/data/in-vivo/11_56/11_56_06_vehicle_local_position_0.csv')
-df_traj3= pd.read_csv('~/Documents/data/in-vivo/12_10/12_10_04_vehicle_local_position_0.csv')
-df_traj4= pd.read_csv('~/Documents/data/in-vivo/12_22/12_22_20_vehicle_local_position_0.csv')
+df_traj1= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/11_40_32_vehicle_local_position_0.csv')
+df_traj2= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/11_56_06_vehicle_local_position_0.csv')
+df_traj3= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/12_10_04_vehicle_local_position_0.csv')
+df_traj4= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/12_22_20_vehicle_local_position_0.csv')
 
 #TRAJ IS USELESS.
-df_traj5= pd.read_csv('~/Documents/data/in-vivo/12_35/12_35_05_vehicle_local_position_0.csv')
+# df_traj5= pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/12_35_05_vehicle_local_position_0.csv')
 
 def fita2blen(f_val, x_desired):
     MAX_X = len(f_val)
@@ -32,10 +32,10 @@ def fita2blen(f_val, x_desired):
     interp = list(interp)
     return interp
 
-path1 = '~/Documents/data/in-vivo/11_40/11_40_32_'
-path2 = '~/Documents/data/in-vivo/11_56/11_56_06_'
-path3 = '~/Documents/data/in-vivo/12_10/12_10_04_'
-path4 = '~/Documents/data/in-vivo/12_22/12_22_20_'
+path1 = '~/Documents/data/droneData_alliantech/in-vivo/11_40_32_'
+path2 = '~/Documents/data/droneData_alliantech/in-vivo/11_56_06_'
+path3 = '~/Documents/data/droneData_alliantech/in-vivo/12_10_04_'
+path4 = '~/Documents/data/droneData_alliantech/in-vivo/12_22_20_'
 
 df_mag1a = pd.read_csv(path1 + 'vehicle_magnetometer_0.csv')
 df_mag1b = pd.read_csv(path1 + 'vehicle_magnetometer_1.csv')
@@ -96,14 +96,14 @@ df_acc4a = pd.read_csv(path4 + 'sensor_accel_0.csv')
 df_acc4b = pd.read_csv(path4 + 'sensor_accel_1.csv')
 df_acc4 = pd.concat([df_acc4a, df_acc4b])
 
-df_mini1 = pd.read_csv('~/Documents/data/in-vivo/11_56/Drone.csv', skiprows = 21)
-#df_slice1 = pd.read_csv('~/Documents/data/in-vivo/11_56/Slice_1_1.csv', sep=';')
+df_mini1 = pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/Drone.csv', skiprows = 21)
+#df_slice1 = pd.read_csv('~/Documents/data/droneData_alliantech/in-vivo/11_56/Slice_1_1.csv', sep=';')
 
 #FIRST FLIGHT
-df_slice2 = pd.read_csv('~/Downloads/Test_Flight1_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
+df_slice2 = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/in-vivo/Test_Flight1_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
 
 #SECOND FLIGHT
-df_slice1 = pd.read_csv('~/Downloads/Test_Flight2_altitude_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
+df_slice1 = pd.read_csv('/home/txa/Documents/data/droneData_alliantech/in-vivo/Test_Flight2_altitude_UNFILTERED.csv', decimal=",", sep=';', skiprows = 22)
 
 df_control1 = pd.read_csv(path1 + 'vehicle_control_mode_0.csv')['flag_control_position_enabled']
 df_control2 = pd.read_csv(path2 + 'vehicle_control_mode_0.csv')['flag_control_position_enabled']
@@ -479,7 +479,7 @@ _3d_traj_graph.update_traces(marker=dict(size=5),
                     selector=dict(mode='markers'))
 
 
-with open("notes/notes_crashland.txt", "r") as f:
+with open("/home/txa/Documents/data/droneData_alliantech/in-vivo/analysis_notes.txt", "r") as f:
     notes = f.readlines()
 #html.Br()#
 rangeval = 100
@@ -701,15 +701,15 @@ df_dropdown = pd.DataFrame({
 
 
 ## TF
-df_chore= pd.read_csv('~/Documents/data/eval_tests/tf_chore.csv')
-df_hover= pd.read_csv('~/Documents/data/eval_tests/tf_hover.csv')
-df_2d1a= pd.read_csv('~/Documents/data/eval_tests/tf_2d1a.csv')
-df_3d1a= pd.read_csv('~/Documents/data/eval_tests/tf_3d1a.csv')
-df_xr1= pd.read_csv('~/Documents/data/eval_tests/tf_xr1.csv')
+df_chore= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_chore.csv')
+df_hover= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_hover.csv')
+df_2d1a= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_2d1a.csv')
+df_3d1a= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_3d1a.csv')
+df_xr1= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_xr1.csv')
 
-df_ht1= pd.read_csv('~/Documents/data/eval_tests/tf_ht1.csv')
+df_ht1= pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/tf_ht1.csv')
 ## CAMERA
-df_cam3_xr1 = pd.read_csv('~/Documents/data/eval_tests/cam3_xr1.csv')
+# df_cam3_xr1 = pd.read_csv('~/Documents/data/droneData_alliantech/eval_tests/cam3_xr1.csv')
 
 
 #EDIT TRAJ GRAPH BASED ON TRAJ
