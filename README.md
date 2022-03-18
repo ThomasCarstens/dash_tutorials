@@ -6,20 +6,28 @@ clearing_data_exploration             |  AT_realtime_bar
 ![](LIVE/clearing_data_exploration.png)  |  ![](LIVE/AT_realtime_bar.png) 
 First few tests onboarding the Pixhawk on a random drone. | Final field tests with the home-built drone.
 
+Custom dashboards, including one for the Flight Arena:
+
 WEB_arcade_dashboard_1(1)            |  WEB_arcade_dashboard_1(2)
 :-------------------------:|:-------------------------:
 ![](LIVE/WEB_arcade_dashboard_1(1).png)  |  ![](LIVE/WEB_arcade_dashboard_1(2).png)
 Measures of latency on the Flight Arena. Thesis-related. | Hover tests on the Flight Arena.
+
+Complete sensor dashboard:
 
 invivo_dashboard_1(1)            |  invivo_dashboard_1(2)
 :-------------------------:|:-------------------------:
 ![](LIVE/invivo_dashboard_1(1).png)  |  ![](LIVE/invivo_dashboard_1(2).png)
 Exploring all sensors recorded via Pixhawk.| Data is trimmed dynamically.
 
+Specific data exploratory dashboards for gesture piloting (Thesis-related)
+
 scrutiny_dashboard_1            |  CT_piloting_graphs
 :-------------------------:|:-------------------------:
 ![](LIVE/scrutiny_dashboard_1.png)  |  ![](LIVE/CT_piloting_graphs.png)
 Gesture Piloting: Overview graphs | Placing human gestures within the trajectory. Thesis-related.
+
+And more
 
 CT_smlatency            |  AT_correlate_graphs
 :-------------------------:|:-------------------------:
