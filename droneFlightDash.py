@@ -16,9 +16,9 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 #### VALUES OUTDOORS (WITH GPS)
-log_adc = pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-18_adc_report_0.csv")
-log_gps =pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-18_vehicle_local_position_0.csv")
-log_acc = pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-18_sensor_accel_0.csv")
+log_adc = pd.read_csv("~//Documents/data/droneData_alliantech/square_alliantech/log_8_2021-6-18-12-37-18_adc_report_0.csv")
+log_gps =pd.read_csv("~//Documents/data/droneData_alliantech/square_alliantech/log_8_2021-6-18-12-37-18_vehicle_local_position_0.csv")
+log_acc = pd.read_csv("~//Documents/data/droneData_alliantech/square_alliantech/log_8_2021-6-18-12-37-18_sensor_accel_0.csv")
 
 print(list(log_acc))
 print(list(log_acc))

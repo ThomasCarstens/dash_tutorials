@@ -22,9 +22,9 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 #log_gps =pd.read_csv("~/Documents/data/testData/log_3_2021-6-18-10-44-52_vehicle_local_position_0.csv")
 
 #### VALUES OUTDOORS (WITH GPS)
-log_adc = pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-18_adc_report_0.csv")
+log_adc = pd.read_csv("~//Documents/data/droneData_alliantech/square_alliantech/log_8_2021-6-18-12-37-18_adc_report_0.csv")
 #log_accel = pd.read_csv("11_09_32_adc_report_0.csv")
-log_gps =pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-18_vehicle_local_position_0.csv")
+log_gps =pd.read_csv("~//Documents/data/droneData_alliantech/square_alliantech/log_8_2021-6-18-12-37-18_vehicle_local_position_0.csv")
 
 #label xaxis as (UTC(12-37-18) + timestamp// 10**9)
 #then convert old timestamps to add to new dataframe.

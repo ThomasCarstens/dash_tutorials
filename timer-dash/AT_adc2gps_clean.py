@@ -16,9 +16,9 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 #### VALUES OUTSIDE ALLIANTECH (WITH GPS)
-log_adc = pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-18_adc_report_0.csv")
-log_gps = pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-18_vehicle_local_position_0.csv")
-log_acc = pd.read_csv("~/Documents/data/square_alliantech/log_8_2021-6-18-12-37-18_sensor_accel_0.csv")
+log_adc = pd.read_csv("~//Documents/data/droneData_alliantech/square_alliantech/log_8_2021-6-18-12-37-18_adc_report_0.csv")
+log_gps = pd.read_csv("~//Documents/data/droneData_alliantech/square_alliantech/log_8_2021-6-18-12-37-18_vehicle_local_position_0.csv")
+log_acc = pd.read_csv("~//Documents/data/droneData_alliantech/square_alliantech/log_8_2021-6-18-12-37-18_sensor_accel_0.csv")
 
 ### VALUES IN PARKING LOT (NO GPS)
 # log_69_2021-6-25-12-41-44_adc_report_0.csv    log_69_2021-6-25-12-41-44.ulg
@@ -351,8 +351,8 @@ def update_figure(trim_step, sensor):
             color="#000000"))
     scat2.add_layout_image(
             dict(
-                source = Image.open('/home/txa/Documents/data/square_alliantech/alliantech_top10.png'),
-                #source="/home/txa/Documents/data/square_alliantech/alliantech_top.png",
+                source = Image.open('/home/txa//Documents/data/droneData_alliantech/square_alliantech/alliantech_top10.png'),
+                #source="/home/txa//Documents/data/droneData_alliantech/square_alliantech/alliantech_top.png",
                 xref="x",
                 yref="y",
                 x=-47,

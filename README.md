@@ -1,9 +1,9 @@
 # dash_tutorials
 Experimentation with the python Dash library: v3.0 snapshots of work processes.
 
-clearing_data_exploration             |  
+clearing_data_exploration             |  AT_realtime_bar
 :-------------------------:|:-------------------------:
-![](LIVE/clearing_data_exploration.png)  |  
+![](LIVE/clearing_data_exploration.png)  |  ![](LIVE/AT_realtime_bar.png) 
 :-------------------------:|:-------------------------:
 WEB_arcade_dashboard_1(1)            |  WEB_arcade_dashboard_1(2)
 :-------------------------:|:-------------------------:
