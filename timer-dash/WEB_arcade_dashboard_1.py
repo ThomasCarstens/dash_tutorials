@@ -105,26 +105,9 @@ rootLayout = html.Div(style={ 'backgroundColor': colors['background'],}, childre
 
                     ], className= 'twelve columns'),
                     
-                    # html.Div([
-                    #     html.H3(children='Flight Analysis', id='big-title', style = {'width': '100%', 'display': 'flex', 'align-items': 'left', 'justify-content': 'left'}),
-                    #     html.Iframe(
-                    #     id = 'external_video',
-                    #     src="https://drive.google.com/file/d/1OzedkXFXX97PheU4dYVHQempUOxBx6X6/preview",
-                    #         style={"height": "300px", "width": "65%"}),
-                    # ], className='three columns'),
-
-                    # html.Div(html.H6(children=notes, id='text-div', 
-                    #         style = {'width': '100%', 'display': 'flex', 'align-items': 'left', 'justify-content': 'left'}
-                    #         ), className='three columns'),
                 ]),
 
                 html.Div(className='row', children = [
-                    # html.Div((
-                    #     <blockquote class="trello-board-compact">
-                    #     <a href="{https://trello.com/b/ApWZRkQy/newsletter-articles}">Trello Board</a>
-                    #     </blockquote>
-                    #     <script src="https://p.trellocdn.com/embed.min.js"></script>
-                    # ), className='six columns'),
 
                     html.Div(dcc.Graph(
                         id='3d_traj',
@@ -476,15 +459,6 @@ def update_figure(traj_range, category, cb_trig): #params
         df_traj = df_hdibag_hand
     if csv_of_interest == 'df_bot2bot':
         df_traj = df_bot2bot     
-    # 'XR1': [
-    # 'xr1', 
-    # 'HAND_TEST': [
-    #     'ht1', 
-    # 'HAND_DEMO': [
-    #     'hd1', 
-
-    #print(df_traj)
-    #traj_range = [1, len(df_traj)]
 
     #adapt .csv to slider range
     print("df:", df_traj)
@@ -787,7 +761,8 @@ def update_figure(traj_range, category, cb_trig): #params
             delays = []
             delays_time = []
             print(drone_traj_z)
-            lower_bound = -13000
+
+            lower_bound = -13000 #start of analysis.
             #lower_bound = -1000
             for count_ros, ros_z in enumerate(drone_traj_z[lower_bound:]):
                 if count_ros % 1000 == 0:
@@ -797,14 +772,28 @@ def update_figure(traj_range, category, cb_trig): #params
                 for count, same_z in enumerate(drone_xr_z):
                     
                     if round(ros_z, 6) == round(same_z, 6):
-                        #print('hi')
-                        #print(abs(time_xr[count] - drone_timestamp[count_ros]))
                         time_delay = abs(time_xr[count] - drone_timestamp[lower_bound:][count_ros])
-                        #print(time_delay.total_seconds())
                         delays.append(time_delay.total_seconds())
                         delays_time.append(drone_timestamp[lower_bound:][count_ros])
                         break
+
             print(delays)
+
+            df_smlatency = pd.DataFrame({
+                                        'delays_time': (delays_time),
+                                        'delays': (delays),
+                                        })
+
+            df_smvisual = pd.DataFrame({
+                                        'sim_time': (time_xr)[lower_bound:],
+                                        'x': (drone_xr_x)[lower_bound:], 
+                                        'y': (drone_xr_y)[lower_bound:],
+                                        'z': (drone_xr_z)[lower_bound:]
+                                        })
+            # SAVED !
+            # df_smlatency.to_csv("sensor_performance/smlatency.csv", index=False)
+            # df_smvisual.to_csv("sensor_performance/df_smvisual.csv", index=False)
+
 
             traj_graph.add_trace(go.Scatter(x=time_xr, y=drone_xr_z,
                                 mode='markers',

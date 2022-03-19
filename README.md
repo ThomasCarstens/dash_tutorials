@@ -46,7 +46,19 @@ Attempt at real-time drone movement. Experimental. | Taking the Pixhawk for a wa
 
 Some non-Dash animations: 
 
-Field scan exercise            |  Biggest Changes on Field
+Lighting scan exercise            |  Biggest Changes on Field
 :-------------------------:|:-------------------------:
 ![](LIVE/fieldscan_v01.gif)  |  [Too large]
-Lighting Data Acquisition. First measure of LH11 effectiveness. | Changes in %/m of humidity and lux/m of lighting
+Lighting Data Acquisition. First measure of LHT11 effectiveness. | Changes in %/m of humidity and lux/m of lighting
+
+
+Humidity scan exercise            |  Biggest Changes on Field
+:-------------------------:|:-------------------------:
+![](LIVE/humidscan_v01.gif)  |  [Too large]
+Humidity Data Acquisition. First measure of LHT11 effectiveness. | Changes in %/m of humidity and lux/m of lighting
+
+
+Latency Animation            |  Vs. Trajectory plotting.
+:-------------------------:|:-------------------------:
+![](LIVE/humidscan_v01.gif)  |  [Too large]
+Humidity Data Acquisition. First measure of LHT11 effectiveness. | Changes in %/m of humidity and lux/m of lighting

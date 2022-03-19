@@ -652,30 +652,38 @@ for i in range(24474,24474+len(x_pos)):
 
 # print('displacement of temp', len(df_surface['temp']), 'equivalent is', len(x_rotpos))
 # Used to test displacement here.
-heat_traj = pd.DataFrame({
-                            'x': np.array(x_rotpos[:-830]),
-                            'y': np.array(y_rotpos[:-830]),
-                            'light': df_surface['light'][830:],     
-                            })
 
-# SAVED !
-# lighting_traj = pd.DataFrame({
-#                             'x': np.array(x_rotpos),
-#                             'y': np.array(y_rotpos),
-#                             'light': df_surface['light'],     
+
+
+
+# heat_traj = pd.DataFrame({
+#                             'x': np.array(x_rotpos[:-830]),
+#                             'y': np.array(y_rotpos[:-830]),
+#                             'heat': df_surface['heat'][830:],     
 #                             })
-# lighting_traj.to_csv("sensor_performance/lighting_traj.csv", index=False)
+# heat_traj.to_csv("sensor_performance/heat_traj.csv", index=False)
+df_surface = pd.DataFrame({
+                            't': np.array(t_pos),
+                            'x': np.array(x_rotpos),
+                            'y': np.array(y_rotpos),
+                            'z': np.array(z_pos), # no need to rotate these.
+                            'light': np.array(adc_flight01),
+                            'temp': np.array(fitted_temp), 
+                            'humid': np.array(fitted_humid), 
+                            'acc': np.array(fitted_acc), # no need to rotate these.
+                            'vel': np.array(fitted_vel), # no need to rotate these.
+                            
+                            })
+# SAVED !
+
+df_surface.to_csv("sensor_performance/atmos_traj.csv", index=False)
 
 def read_file():
     #RETRIEVE ONE...
     lighting_traj_2= pd.read_csv('sensor_performance/lighting_traj.csv')
     return lighting_traj_2
 
-
-
-
 lighting_traj_2 = read_file()
-print(lighting_traj_2.head())
 
 xy_graph.add_trace(
     go.Scattergl(
@@ -788,6 +796,7 @@ arduino_graph.update_layout(legend=dict(
     xanchor="right",
     x=1
 ))
+
 arduino_duration = (1065652 - 347123) #347123 == 247945064
 print('arduino: stop at:', (782170427-247945064)/1000 + 347123   )
 #Set Scale
