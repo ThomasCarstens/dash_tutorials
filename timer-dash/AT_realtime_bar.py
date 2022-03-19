@@ -633,21 +633,58 @@ for i in range(24474,24474+len(x_pos)):
     y_rotpos.append(y_rot)
 
 
-# df_surface['temp']
+# FROM INTERNAL CALCULATIONS. NOW from txt.
+# cropped_investigation_start = 20000
+# cropped_investigation_end = 25000
 
-# Add Data
-cropped_investigation_start = 20000
-cropped_investigation_end = 25000
+# print('displacement of temp', len(df_surface['temp']), 'equivalent is', len(x_rotpos))
+# xy_graph.add_trace(
+#     go.Scattergl(
+#         x =  x_rotpos[:-830],#[2000:],#[cropped_investigation_start:cropped_investigation_end],
+#         y =  y_rotpos[:-830],#[2000:],#[cropped_investigation_start:cropped_investigation_end],
+#         mode='markers',
+#         marker=dict(
+#                     color=df_surface['temp'][830:],#fitted_temp[2000:],#[cropped_investigation_start:cropped_investigation_end],#adc_flight01,
+#                     colorscale='sunset_r', #'Viridis' #for lighting
+#                     showscale=True, )
+#     ),
+# )
 
-print('displacement of temp', len(df_surface['temp']), 'equivalent is', len(x_rotpos))
+# print('displacement of temp', len(df_surface['temp']), 'equivalent is', len(x_rotpos))
+# Used to test displacement here.
+heat_traj = pd.DataFrame({
+                            'x': np.array(x_rotpos[:-830]),
+                            'y': np.array(y_rotpos[:-830]),
+                            'light': df_surface['light'][830:],     
+                            })
+
+# SAVED !
+# lighting_traj = pd.DataFrame({
+#                             'x': np.array(x_rotpos),
+#                             'y': np.array(y_rotpos),
+#                             'light': df_surface['light'],     
+#                             })
+# lighting_traj.to_csv("sensor_performance/lighting_traj.csv", index=False)
+
+def read_file():
+    #RETRIEVE ONE...
+    lighting_traj_2= pd.read_csv('sensor_performance/lighting_traj.csv')
+    return lighting_traj_2
+
+
+
+
+lighting_traj_2 = read_file()
+print(lighting_traj_2.head())
+
 xy_graph.add_trace(
     go.Scattergl(
-        x =  x_rotpos[:-830],#[2000:],#[cropped_investigation_start:cropped_investigation_end],
-        y =  y_rotpos[:-830],#[2000:],#[cropped_investigation_start:cropped_investigation_end],
+        x = lighting_traj_2['x'],
+        y =  lighting_traj_2['y'],
         mode='markers',
         marker=dict(
-                    color=df_surface['temp'][830:],#fitted_temp[2000:],#[cropped_investigation_start:cropped_investigation_end],#adc_flight01,
-                    colorscale='sunset_r', #'Viridis' #for lighting
+                    color=lighting_traj_2['light'],
+                    colorscale='sunset_r', 
                     showscale=True, )
     ),
 )
@@ -804,13 +841,13 @@ acc_filtered = butter_lowpass_filter(df_surface['acc'], cutoff, fs, order)
 #     ), secondary_y=True,
 # )
 
-# LIGHTING EVALUATION: HOW FAST IS THE FASTEST?
+# LIGHTING EVALUATION #####
 adc_m = []
 adc_speeds = []
 LDR_range = (150-20)+1
-adc_range = 500#len(adc_flight01[:-1])
+adc_range = 500 #len(adc_flight01[:-1])
 import time
-t_i = time.time()
+t_i = time.time() #in order to time this analysis.
 
 for i in range(24531, adc_range): #-1 for full
     #print(adc_flight01[i+1])
@@ -818,15 +855,15 @@ for i in range(24531, adc_range): #-1 for full
 
         # find closest to 1 second
         if (x_adc[j]-x_adc[i]) >=1:
-            if i%10 ==0:
+            if i%10 ==0:    # loading bar
                 print(i,'/', adc_range, '|', (i-24531)/(adc_range-24531))
-            if i%100 ==0:
+            if i%100 ==0:   # average time per 100
                 t_f = time.time()
                 t_100 = t_f-t_i
                 t_left = t_100 * (adc_range-i)/100
                 print('time per 100:', t_f-t_i, 'in minutes:', t_left/60)
                 t_i = t_f
-            if i%10000 ==0:
+            if i%10000 ==0: # 10 000 takes over 30min, so save it
                 np.savetxt('timer-dash/sensor_performance/adc_speeds.csv', adc_speeds, delimiter=',')
                 np.savetxt('timer-dash/sensor_performance/adc_m.csv', adc_m, delimiter=',')
                 adc_m_clean = list(filter(lambda num: num != 0, adc_m))
@@ -929,9 +966,9 @@ print(max(np.absolute(temp_speeds_clean)), 'is max temp change/s.')
 print(min(np.absolute(temp_speeds_clean)), 'is min temp change/s.')
 
 
-(72.74, 0.21167)
-(86.44, 0.9256)
-(92.44, 3.02006)
+# (72.74, 0.21167)
+# (86.44, 0.9256)
+# (92.44, 3.02006)
 
 arduino_graph.add_trace(
     go.Scattergl(

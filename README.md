@@ -44,3 +44,9 @@ CT_collision_realtime            |  AT_adc2gps_clean
 ![](LIVE/CT_collision_realtime.png)  |  [Too large]
 Attempt at real-time drone movement. Experimental. | Taking the Pixhawk for a walk. The barometer freaked out.
 
+Some non-Dash animations: 
+
+Field scan exercise            |  Biggest Changes on Field
+:-------------------------:|:-------------------------:
+![](LIVE/fieldscan_v01.gif)  |  [Too large]
+Lighting Data Acquisition. First measure of LH11 effectiveness. | Changes in %/m of humidity and lux/m of lighting
