@@ -165,30 +165,90 @@ DYNAMIC_CONTROLS = {
             'timer-graphs': html.Div([
                 html.H3(children='Multitasker App', id='big-title', style = {'width': '100%', 'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}),
 
+                #html.Div([
+                # html.H1(["Example heading", dbc.Badge("New", className="ml-1")]),
+                # dbc.Row(
+                #     [
+                #         dbc.Col(
+                #             dbc.Row(
+                #                 html.H3("Criteria"),
+                #                 dbc.Col(graph1, width = 6
+                #                 ),
+
+                #                 dbc.Col(graph2, width = 6
+                #                 ),
+                #             ),
+                #         ),
+                #         dbc.Col(
+                #             html.Div("One of three columns")),
+                #         dbc.Col(
+                #             html.Div("One of three columns")),
+                #     ],
+                #     no_gutters=True,
+                # ), 
+                # #]),
+
                 html.Div(className='row', children=[
 
                     html.Div([
-                        html.H3('🔥 Personal Goals', style = {'width': '100%', 'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}),
+                        html.H3('Success Rate', style = {'width': '100%', 'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}),
                         (dcc.Dropdown(
                             id = 'open1-dropdown',
                             options=[
-                                {'label': 'No graphs yet!', 'value': 'No graphs yet!'}, ],
+                                {'label': 'No graphs yet!', 'value': 'No graphs yet!'},
+                            ],
                             placeholder="Graph to Mark Off",
                         )),
                         html.Div(className='row', style={"margin-bottom": "30px"}, children=[
+                            #html.Div(className='row', children=[
                             html.Div([html.Button("➕", id="open1")], style = {'width': '5%', 'display': 'inline-flex', 'align-items': 'left', 'justify-content': 'left'}),  
+                            #html.Div([html.Button("➕", id="open2")], style = {'width': '50%', 'display': 'inline-flex', 'align-items': 'right', 'justify-content': 'right'}),  
+                            #]),
+                            #html.Div([html.Button("☰", id="edit1")], style = {'width': '50%', 'display': 'inline-flex', 'align-items': 'left', 'justify-content': 'left'}),  
                             html.Div([html.Button('Tick', id='mark-done')], style = {'width': '80%', 'display': 'inline-flex', 'align-items': 'center', 'justify-content': 'center'}), 
                             html.Div([html.Button("Remove", id="open1-mark-remove")], style = {'width': '5%', 'display': 'inline-flex', 'align-items': 'center', 'justify-content': 'center'}),  
 
                         ]),
 
+
                         dcc.Graph(figure=fig, id="graph1"),
                         dcc.Graph(figure=fig, id="graph2"),
+                        # html.Div([
+                        #     #html.Div([        
+                        #     dcc.Graph(figure=fig, id="graph1"),# style={'display': 'inline-block'}),
+                        #             #dcc.Graph(className='two columns', figure=fig, id="graph2", style={'display': 'inline-block'})
+                        #     #], className='seven columns'),
 
-                    ], className='five columns'),
+                        #             #dcc.Graph(figure=fig, id="graph1", style={'display': 'inline-block'}),
+                        #     #html.Div([   
+                        #     dcc.Graph(figure=fig, id="graph2"),# style={'display': 'inline-block'})
+                        #     #], className='seven columns'),
 
+                        #     # html.Div([   
+                        #     # dcc.Graph(figure=fig, id="graph3"),# style={'display': 'inline-block'})
+                        #     # ], className='six columns'),
+                        # ]),
+
+
+
+                    ], className='four columns'),
+                    # html.Div([
+                    #     dcc.Graph(figure=fig,
+                    #     id='criteria-indicator', 
+                    #     ),
+                    # ], className='four columns'),
+
+                    # html.Div([
+                    #     dcc.Graph(figure=fig,
+                    #     id='criteria-indicator-02', 
+                    #     ),
+                    # ], className='six columns'),
+
+                    # ]),
 
                     html.Div([                        
+
+                        
 
                         html.H3(date.today(), style = {'width': '100%', 'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}),
 
@@ -204,27 +264,22 @@ DYNAMIC_CONTROLS = {
                             ],
                             value='USAGE TIPS'
                         ),
-                        html.H3("", style = {'width': '100%', 'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}),
-
-                        html.Div([html.Button("Save My Config", id="save")], style = {'width': '100%', 'display': 'inline-flex', 'align-items': 'center', 'justify-content': 'center', "margin-bottom": "60px"}),  
 
                         dcc.Graph(figure=fig,
                         id='speed-indicator', 
                         ),
+                        html.Div([html.Button("Save", id="save")], style = {'width': '100%', 'display': 'inline-flex', 'align-items': 'center', 'justify-content': 'center', "margin-bottom": "60px"}),  
                          
-                        # gif.GifPlayer(
-                        #     gif='assets/hack_time.gif',
-                        #     still='assets/Rakotz.jpg',
-                        # ),
-
-                        # html.Iframe(src="https://trello.com/b/Fg3xHfpn.html",
-                        #      style={"height": "300px", "width": "100%"}),
+                        gif.GifPlayer(
+                            gif='assets/hack_time.gif',
+                            still='assets/Rakotz.jpg',
+                        ),
 
 
-                    ], className='two columns'),
+                    ], className='four columns'),
     
                     html.Div([
-                        html.H3('⚙️ Outside Factors', style = {'width': '100%', 'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}),
+                        html.H3('Countdowns', style = {'width': '100%', 'display': 'flex', 'align-items': 'left', 'justify-content': 'left'}),
                         (dcc.Dropdown(
                             id = 'open2-dropdown',
                             options=[
@@ -236,34 +291,26 @@ DYNAMIC_CONTROLS = {
                             html.Div([html.Button("➕", id="open2-add1")], style = {'width': '5%', 'display': 'inline-flex', 'align-items': 'left', 'justify-content': 'left'}),  
                             html.Div([html.Button('Complete', id='open2-mark-done')], style = {'width': '80%', 'display': 'inline-flex', 'align-items': 'center', 'justify-content': 'center'}), 
                             html.Div([html.Button("Remove", id="open2-mark-remove")], style = {'width': '5%', 'display': 'inline-flex', 'align-items': 'center', 'justify-content': 'center'}),  
+
                         ]),
                         
                         dcc.Graph(figure=fig,
                         id='next-indicator', 
                         ),
-
+                        # html.Div([dcc.Graph(figure=fig,
+                        # id='deadline-figaro',
+                        # )], style={'display': 'inline-block'}),
                         html.Div([dcc.Graph(figure=fig,
                         id='deadline-fig2',
                         )])
-                    ], className='five columns'),
+                    ], className='four columns'),
 
-
-                    html.Div([
-                            html.Iframe(src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Africa%2FJohannesburg&showTitle=1&hl=en_GB&src=dGhvbWF4YXJzdGVuc0BnbWFpbC5jb20&src=bGE2dmRxOGQ1bDFtNzlibGtsam8xMmVwZ3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=cmxzN29oZmJhOHIxcDY0cWh0NW04OGppYzBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4uZnJlbmNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZnIuc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZnIuZnJlbmNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%237CB342&color=%23D81B60&color=%23D81B60&color=%230B8043&color=%230B8043&color=%23E4C441.html", 
+                    html.Div( className = "calendar-view", children = [
+                    html.Iframe(src="https://calendar.google.com/calendar/embed?src=thomaxarstens%40gmail.com&ctz=Africa%2FJohannesburg", 
                             #style="border: 0" width="800" height="600" frameborder="0" scrolling="no"
-                            style={"height": "500px", "width":"100%", "border-width":"0", "frameborder": "0", "scrolling":"no"}),
+                            style={"width":"100%", "border-width":"0", "frameborder": "0", "scrolling":"no"}),
+                    ])
 
-                    ], className='five columns'),
-
-
-                    html.Div([
-                            html.Iframe(src="https://trello.com/b/1MVgBrR0.html",
-                             style={"height": "500px", "width": "100%", 'display': 'inline-flex', 'align-items': 'center', 'justify-content': 'center'}),
-                    
-                    ], className='five columns'),
-                    # html.Div( className = "calendar-view", children = [
-                                        # ])
-                    # <iframe src="https://calendar.google.com/calendar/embed?src=la6vdq8d5l1m79blkljo12epgs%40group.calendar.google.com&ctz=Africa%2FJohannesburg" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                     # <blockquote class="trello-board-compact">
                     #     <a href="{url to board}">Trello Board</a>
                     #     </blockquote>

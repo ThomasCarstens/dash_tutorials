@@ -123,12 +123,13 @@ graph_layout_right = [[xy_layouts[0], xy_layouts[2]],
                         #   1   .   .]
                         # [ 0   1   2
 
-pyramid_layouts = [[0, 1], [0, 0.5], [0, 0.25], [0, 0.125], [0, 0.0625]]
+pyramid_layouts = [[1, 0.5], [0, 0.4], [0, 0.2], [0, 0.125], [0, 0.0625]]
 graph_layout_pyramid = [[pyramid_layouts[0], pyramid_layouts[0]],
                         [pyramid_layouts[0], pyramid_layouts[1]],
                         [pyramid_layouts[0], pyramid_layouts[2]],
                         [pyramid_layouts[0], pyramid_layouts[3]],
-                        [pyramid_layouts[0], pyramid_layouts[4]]]                 
+                        [pyramid_layouts[0], pyramid_layouts[4]]]        
+         
 # INITIALIZE: empty GAUGE trace
 fig = go.Figure()
 fig.add_trace(go.Indicator(
@@ -144,7 +145,7 @@ fig.add_trace(go.Indicator(
     ))
 
 # Override go.Figure() margins.
-tightfit = dict(l=20, r=20, t=20, b=0)
+tightfit = dict(l=20, r=20, t=50, b=0)
 fig.update_layout(
     margin=tightfit,
     paper_bgcolor="LightSteelBlue",
@@ -191,102 +192,27 @@ app.layout = html.Div([
 
 @app.callback(dash.dependencies.Output('page-content', 'children'),
               dash.dependencies.Input('pages-dropdown', 'value'),
-              #[dash.dependencies.State('drone-dev-dropdown', 'value')],
-              #dash.dependencies.Input('button+', 'n_clicks')
-              #prevent_initial_call=True
               )
 def display_page(value):
 
     return html.Div([
         DYNAMIC_CONTROLS['timer-graphs'],
         #DYNAMIC_CONTROLS['edit-timers'],
-        #DYNAMIC_CONTROLS['see-database']
+        DYNAMIC_CONTROLS['see-database'],
         DYNAMIC_CONTROLS['open1-window'],
         DYNAMIC_CONTROLS['open2-window'],
         DYNAMIC_CONTROLS['edit1-window'],
         DYNAMIC_CONTROLS['edit2-window'],
     ])
-    # if value == "Time Dashboard" :
-    #     return html.Div([
-    #         DYNAMIC_CONTROLS['timer-graphs'],
-    #         #DYNAMIC_CONTROLS['edit-timers'],
-    #         #DYNAMIC_CONTROLS['see-database']
-    #         DYNAMIC_CONTROLS['open1-window'],
-    #         DYNAMIC_CONTROLS['open2-window'],
-    #         DYNAMIC_CONTROLS['edit1-window'],
-    #         DYNAMIC_CONTROLS['edit2-window'],
-    #     ])
-    # if value == "Photogrammetry":
-    #     return html.Div([
-    #         DYNAMIC_CONTROLS['general-photogrammetry'],
-    #         DYNAMIC_CONTROLS['2-photos'],
-    #     ])
-    # if value == "Machine Learning" :
-    #     return html.Div([
-    #         DYNAMIC_CONTROLS['drone-graphs'],
-    #         #DYNAMIC_CONTROLS['timer-graphs']
-    #     ])
-    # if value == "Drone Dev" :
-    #     return html.Div([
-    #         DYNAMIC_CONTROLS['drone-graphs'],
-    #         #DYNAMIC_CONTROLS['timer-graphs']
-    #     ])
-
-@app.callback(dash.dependencies.Output('page-content-more', 'children'),
-                dash.dependencies.Output('session-nav', 'data'),
-              dash.dependencies.Input('drone-dev-dropdown', 'value'),
-              )
-def display_page(value):
-
-    # {'label': '5 June | UAV Photogrammetry', 'value': 'Drone Photogrammetry'},
-    # {'label': '15 June | DAQ System Design', 'value': 'DAQ System'},
-    # {'label': '5 July  | In-vivo Data Collection Flight', 'value': 'In-vivo Data Collection Flight'},
-    # {'label': '20 July | UAV Carrier System Design', 'value': 'Carrier System Design'},
-    # {'label': '30 July | Drone Drop', 'value': 'Drone Drop'},
-
-    # STORE DATA HERE
-    session_page = value
-    print(session_page)
-    page_layout = html.Div([
-        #DYNAMIC_CONTROLS['drone-graphs'],
-    ])
-    if value == "Drone Photogrammetry" :
-        page_layout = html.Div([
-            DYNAMIC_CONTROLS['drone-graphs'],
-            DYNAMIC_CONTROLS['general-photogrammetry'],
-            DYNAMIC_CONTROLS['2-photos'],
-        ])
-    if value == "Carrier System Design" :
-        page_layout = html.Div([
-            DYNAMIC_CONTROLS['drone-graphs'],
-            DYNAMIC_CONTROLS['general-photogrammetry'],
-        ])
-    if value == "Drone Drop" :
-        page_layout = html.Div([
-            DYNAMIC_CONTROLS['drone-graphs'],
-            DYNAMIC_CONTROLS['in-vivo'],
-        ])
-
-    if value == "DAQ System" :
-        page_layout = html.Div([
-            DYNAMIC_CONTROLS['drone-graphs'],
-            DYNAMIC_CONTROLS['2-photos'],
-        ])
-
-    if value == "In-vivo Data Collection Flight" :
-        page_layout = html.Div([
-            DYNAMIC_CONTROLS['drone-graphs'],
-            DYNAMIC_CONTROLS['in-vivo'],
-        ])      
-
-    return page_layout, session_page
-
+ 
 
 ###### The Rest of the CALLBACKS ####################################################
 
+
+###### Dashboard Rendering ###########################
+
 #FUNCTION: Turn a go.Figure() into white with optional Title/Message.
 #USAGE: blankSpace(priority_fig, "Logs", "No logs found.")
-
 def blankSpace(figure, my_title, my_text):
     figure.update_layout(plot_bgcolor='rgb(255,255,255)',
                                             title=dict(
@@ -298,8 +224,6 @@ def blankSpace(figure, my_title, my_text):
                                                 ),)
     figure.update_xaxes(visible= False)
     figure.update_yaxes(visible= False)
-
-    # INTRO
     figure.add_annotation(text=my_text,
                     xref="paper", yref="paper",
                     font=dict(
@@ -309,9 +233,8 @@ def blankSpace(figure, my_title, my_text):
                         ),
                     x=0, y=0.9, showarrow=False)
 
-###### Dashboard Rendering ###########################
-########## INITIALIZE: empty GAUGE trace
 
+#INITIALIZE: empty GAUGE trace
 empty_trace_right = go.Indicator(
     mode = "gauge+number+delta",
     value = 0,
@@ -356,7 +279,8 @@ awkward_trace_left = go.Indicator(
     domain = {'x': graph_layout_left[3][0], 'y': graph_layout_left[3][1]},
     )    
 
-@app.callback( #speed-indicatorgraph1
+# recursive_fig, recursive_fig2, priority_fig, deadline_fig, deadline_fig2
+@app.callback( 
     dash.dependencies.Output('graph1', 'figure'), #deadline-fig2graph2
     dash.dependencies.Output('graph2', 'figure'), #deadline-fig2graph2
     dash.dependencies.Output('speed-indicator', 'figure'),
@@ -417,11 +341,9 @@ def update_output(n_intervals, checkedgraph, what2graph):
 
     #LOOP CONTAINS DEADLINE CALCS FOLLOWED BY DEADLINE GRAPHS.
     for i in db_selected.keys():
-        #print("Here", db_selected[i][1].split(',')) #LOL WRONG GRAPH...
 
         # ALL TIMER VALUES
         d=[int(x) for x in db_selected[i][1].split(',')]
-        #print(d)
         deadline = datetime.datetime(year=d[0], month=d[1], day=d[2], hour=d[3], minute=d[4], second=d[5])
         time_left=(deadline - datetime.datetime.now())
         deadline_list.append(time_left)
@@ -476,12 +398,10 @@ def update_output(n_intervals, checkedgraph, what2graph):
 
         #limitations: NO LABEL + MIGHT TRANSFER TO MAIN.
 
-        #print(db_selected[i])
-        #df_weekAdvance.to_csv('~/Documents/DashBeginnerTutorials/db_Week_advancement.csv', index=False)
+        #both late and complete are removed here.
         if db_selected[i][10] != 'unfinished':
-            print(db_selected[i])
             df_weekAdvance[i]= db_selected[i]
-            continue #both late and complete are removed here.
+            continue 
 
         count+=1
         graph_position = graph_layout_right [(count-1)%4]
@@ -512,19 +432,20 @@ def update_output(n_intervals, checkedgraph, what2graph):
         gauge = {
             'axis': {'visible': False, 'range': value_range,}, #axis visible: bool(db_selected[i][4])
             'bar' : {'color' : color_or_grey,}},
-        title = {'text': db_selected[i][7], 'font': {'size': 20}},
+        title = {'text': db_selected[i][7], 'font': {'size': 30}},
         domain = {'x': graph_position[0], 'y': graph_position[1]}
                 )) 
-       
-    print("count is now", count)
+    if count > 5 and count < 8:
+            deadline_fig2.add_trace(empty_trace_right)       
     #REMOVE UNUSED SPACES.
-    if count < 5:
+    if count < 8:
     # WHITE LAYOUT
         deadline_fig2.update_layout(plot_bgcolor='rgb(255,255,255)',
                                         )
         deadline_fig2.update_xaxes(visible= False)
         deadline_fig2.update_yaxes(visible= False)
         blankSpace(deadline_fig2, "", "")
+
     #REMOVE UNUSED SPACES.
     if count == 0:
     # WHITE LAYOUT
@@ -532,14 +453,12 @@ def update_output(n_intervals, checkedgraph, what2graph):
                                         )
         deadline_fig.update_xaxes(visible= False)
         deadline_fig.update_yaxes(visible= False)
-        blankSpace(deadline_fig, "", "Add some graphs :)")
+        blankSpace(deadline_fig, "", "Add some graphs 🎉")
 
-    ### LEFT-SIDE
-    # RECURSIVE FIG RENDER
-    # ################3
-    #####################################
-    # SUCCESSRATE GRAPHS
     #############################################################################
+    ### LEFT-SIDE
+
+    # RECURSIVE FIG RENDER
     recursive_fig = go.Figure()
     recursive_fig.data = []
     recursive_fig2 = go.Figure()
@@ -625,74 +544,78 @@ def update_output(n_intervals, checkedgraph, what2graph):
         #     domain = {'x': graph_position[0], 'y': graph_position[1]} #[int(x) for x in (df_week[i][5]).split(',')]
         #         ))
 
-    #REMOVE UNUSED SPACES.
-    if count < 5:
     # WHITE LAYOUT
+    if count < 8:
+
         recursive_fig2.update_layout(plot_bgcolor='rgb(255,255,255)',
                                         )
         recursive_fig2.update_xaxes(visible= False)
         recursive_fig2.update_yaxes(visible= False)
         blankSpace(recursive_fig2, "", "")
-    #REMOVE UNUSED SPACES.
+
     if count == 0:
-    # WHITE LAYOUT
+
         recursive_fig.update_layout(plot_bgcolor='rgb(255,255,255)',
                                         )
         recursive_fig.update_xaxes(visible= False)
         recursive_fig.update_yaxes(visible= False)
         blankSpace(recursive_fig, "", "Add some graphs :)")
 
+
+
     ######################################
-    # PRIORITY GRAPHS
+    # PRIORITY GRAPHS (CENTER)
     #############################################################################
-    # Option List:
-    # ROUTINE: Shows a scatter plot of a SuccessRate Graph.
+
+
+    # DROPDOWN 1: ROUTINE
+    # Shows a scatter plot of a SuccessRate Graph.
     priority_fig = go.Figure()
-    #priority_fig.data = []
+
     # Must select Graph from dropdown. If so, get pts and compute avg = [arithmetic mean over period, ...] 
     if what2graph == "ROUTINE":# and checkedgraph is not None:
-        #priority_fig = go.Figure()
-        #priority_fig.data = []
+
         for db_entry in df_dedicatedTime:
-            #db_entry = df_dedicatedTime[checkedgraph]
-            #print(db_entry)
-            #print(db_entry[9])
+
             start_day = datetime.datetime.fromtimestamp(float(df_dedicatedTime[db_entry][9])) #!!! To add.
-            #print("start_day is", start_day)
+
             success = [int(x) for x in (df_dedicatedTime[db_entry][13]).split(', ')]
             day= [start_day+datetime.timedelta(days=i) for i in range(len(success))]
             average = sum(success)/len(success)
             
             print (db_entry, "\nDAY", day, "\navg", average, "\nsuccess", success)
 
+            # Place Points
             priority_fig.add_trace(
                 go.Scatter(x=day, y=success,
                                     mode='markers', name= db_entry)
             )
+
+            # 2-point Average
             priority_fig.add_trace(
                 go.Scatter(x=[start_day, start_day+datetime.timedelta(days=len(success)-1)], y=[0,average],
                                     mode='markers+lines', name='avg '+db_entry)
             )
-        priority_fig.update_layout(legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=1.0,
-            xanchor="right",
-            x=0.8
-        ))
+        # priority_fig.update_layout(legend=dict(
+        #     orientation="v",
+        #     yanchor="bottom",
+        #     y=1.0,
+        #     xanchor="right",
+        #     x=0.8
+        # ))
 
-
+        # tightfit = dict(l=20, r=20, t=50, b=0)
+        # fig.update_layout(
+        #     margin=tightfit,
+        #     paper_bgcolor="LightSteelBlue",
+        # )
         priority_fig.update_layout(
             xaxis=dict(
                 type="date",
             ),
-            # title=dict(
-            #     text=checkedgraph,
-            #     font_size=30,
-            #     font_color='black',
-            #     x = 0.5,
-            #     xanchor = 'center'
-            # ),
+            margin=tightfit,
+            paper_bgcolor="#D6EAF8",
+            plot_bgcolor="#D6EAF8",
         )
         return  recursive_fig, recursive_fig2, priority_fig, deadline_fig, deadline_fig2
 
@@ -700,14 +623,15 @@ def update_output(n_intervals, checkedgraph, what2graph):
     # ROUTINE: Shows a scatter plot of a SuccessRate Graph. 
     # Must select Graph from dropdown. Otherwise GO WHITE and SHOW MESSAGE.
 
+    # DROPDOWN 1: Show DOCS 
+
     if what2graph == "USAGE TIPS":
         priority_fig = go.Figure()
         priority_fig.data = []
-        # WHITE LAYOUT
         priority_fig.update_layout(plot_bgcolor='rgb(255,255,255)',
                                     title=dict(
-                                            text="What's up! Let's start",
-                                            font_size=30,
+                                            text=" ⚡🔨 Let's get started.",
+                                            font_size=35,
                                             font_color='black',
                                             x = 0.5,
                                             xanchor = 'center'
@@ -715,67 +639,74 @@ def update_output(n_intervals, checkedgraph, what2graph):
         priority_fig.update_xaxes(visible= False)
         priority_fig.update_yaxes(visible= False)
 
-        priority_fig.add_annotation(text="Select a Graph in the Dropdown",
+        priority_fig.add_annotation(text=" See the other Dropdowns.",
                         xref="paper", yref="paper",
                         font=dict(
                             family="Courier New, monospace",
-                            size=16,
+                            size=25,
                             color="#000000"
                             ),
-                        x=0, y=0.3, showarrow=False)
-        priority_fig.add_annotation(text="To Visualize Your Progress over time",
-                        xref="paper", yref="paper",
-                        font=dict(
-                            family="Courier New, monospace",
-                            size=16,
-                            color="#000000"
-                            ),
-                        x=0, y=0.2, showarrow=False)
+                        x=-0.3, y=0.3, showarrow=False)
+        # priority_fig.add_annotation(text="To Visualize Your Progress",
+        #                 xref="paper", yref="paper",
+        #                 font=dict(
+        #                     family="Courier New, monospace",
+        #                     size=25,
+        #                     color="#000000"
+        #                     ),
+        #                 x=-0.5, y=0.2, showarrow=False)
 
-        priority_fig.add_annotation(text="Add Some Graphs with Below Button",
+        priority_fig.add_annotation(text="💼 Add Graphs with + Buttons",
                         xref="paper", yref="paper",
                         font=dict(
                             family="Courier New, monospace",
-                            size=16,
+                            size=25,
                             color="#000000"
                             ),
-                        x=0, y=0.8, showarrow=False)
+                        x=-0.3, y=0.6, showarrow=False)
+
+        priority_fig.add_annotation(text="💼",
+                        xref="paper", yref="paper",
+                        font=dict(
+                            family="Courier New, monospace",
+                            size=30,
+                            color="#000000"
+                            ),
+                        x=0.5, y=0, showarrow=False)
         return  recursive_fig, recursive_fig2, priority_fig, deadline_fig, deadline_fig2
 
-    # Show PAST Deadlines / COMPLETE Tasks.
+    # DROPDOWN 2: Show PAST Deadlines 
+
     if what2graph == "LOGS":
         priority_fig = go.Figure()
         priority_fig.data = []
 
         # if empty Dataframe, SHOW MESSAGE.
         if df_weekAdvance.empty: 
-            # WHITE LAYOUT
             blankSpace(priority_fig, "Logs", "Not yet any logs.")
             return  recursive_fig, recursive_fig2, priority_fig, deadline_fig, deadline_fig2
 
+        # else if non-empty: append to list and plot a Table.
         names = df_weekAdvance.keys()
-        # Gather all names & deadlines -> ARRAYs names[...] & completeDate[...]
         completeDate = []
         startDate = []
+        # Get start and end dates
         for i in df_weekAdvance:
-            #Using timestamps: only one line (unverified)... #completeDate.append(datetime.datetime.fromtimestamp(float(df_weekAdvance[i][1])))
 
             d=[int(x) for x in df_weekAdvance[i][1].split(',')] #HARD DEADLINE
             deadline = datetime.datetime(year=d[0], month=d[1], day=d[2], hour=d[3], minute=d[4], second=d[5])
-            # NEED DATASTRUCT CONSISTENCY BEFORE THIS
-            #print(df_weekAdvance[i][10])
+
+            # Set 'LATE' if completed late.
             if df_weekAdvance[i][10] == 'Late':
                 completeDate.append('Late')
                 startDate.append(deadline)  
-            else: #completed by deadline
+
+            else: # Set #days_taken if completed on time.
                 start_D=datetime.datetime.fromtimestamp(float(df_weekAdvance[i][10])) # COMPLETION DATE
-                #deadline = datetime.datetime(year=d[0], month=d[1], day=d[2], hour=d[3], minute=d[4], second=d[5])
                 startDate.append(deadline)
                 days_taken = deadline - start_D 
                 completeDate.append(days_taken.days)
 
-
-        # Trace a Table
         priority_fig.add_trace(go.Table(
             header=dict(values=['Task', 'Deadline', 'Days completed before deadline']),
             cells=dict(values=[names, startDate, completeDate]))
@@ -793,7 +724,6 @@ def update_output(n_intervals, checkedgraph, what2graph):
         reordered_deadlines.append(fixed_deadlines.index(closest))
         deadline_list.remove(closest)
         print('ma boy', reordered_deadlines)
-        #print('lisst is ', deadline_list)
 
     # Render URGENCY graphs (priority_fig): categories "HOY" and "NEXT UP" 
     if what2graph == "NEXT UP" or what2graph == "HOY" or what2graph == "WORK":
@@ -804,7 +734,8 @@ def update_output(n_intervals, checkedgraph, what2graph):
     if len(reordered_deadlines) == 0:
         blankSpace(priority_fig, "Upcoming: Today", "All finished for this timeframe.")
 
-    # If there are graphs: MESSAGE
+    # STAGE 2: take TOP PRIORITY: Give Name and ETA.
+
     for g in reordered_deadlines:
         if ((fixed_deadlines[g].days == 0) and (fixed_deadlines[g].seconds//3600 < 12)): #BUG: NOT TAKING THE OBVIOUS ONE.
             priority_key = db_selected.keys()[reordered_deadlines[g]]
@@ -830,8 +761,11 @@ def update_output(n_intervals, checkedgraph, what2graph):
                             x=0, y=-0.27, showarrow=False)           
             break
 
-    count=0 #Used for Layout of selected graphs.
-    visible = 0 #Used for Knowing if any will later be Rendered.
+    # STAGE 2: respecting ordered list, render to CENTER COLUMN
+
+    count=0                     # Used for Layout of selected graphs.
+    visible = 0                 # To smoothen any blank spaces
+
     for g in reordered_deadlines:
         db_selected = df_Upcoming_events
         g = int(g)
@@ -843,25 +777,29 @@ def update_output(n_intervals, checkedgraph, what2graph):
         # "NEXT UP" ----
         # Only graphs with a deadline within 3 hours
         if what2graph == "NEXT UP":
-            # Timer value in minutes, with max range at 180 min
-            db_val[5] = '0,180'
-            timer_value = fixed_deadlines[g].seconds//60
-            # When empty:
+            timer_value = fixed_deadlines[g].seconds//60        # Timer value in minutes
+            db_val[5] = '0,180'                                 # with max range at 180 min
+            
+            # If last timer is overdue (thus all timers might be overdue)
             if fixed_deadlines[g].seconds//60 > 180:
-                if g == reordered_deadlines[-1]: 
-                    # WHITE LAYOUT
+
+                #Before Skipping: Check if list is exhausted and if any are left over.
+                if g == reordered_deadlines[-1] and visible == 0: 
                     blankSpace(priority_fig, "Upcoming", "Your next 3h are free.")
                     return  recursive_fig, recursive_fig2, priority_fig, deadline_fig, deadline_fig2
                 continue
 
+            else:
+                visible += 1
+
         # "HOY" ----
         # Only graphs with a deadline within 1 day
         if what2graph == "HOY":
+            timer_value = fixed_deadlines[g].seconds//3600      # Timer value in hours
+            db_val[5] = '0,12'                                  # with max range at 12h
             
-            db_val[5] = '0,12'  # Timer value in hours, with max range at 12h
-            timer_value = fixed_deadlines[g].seconds//3600
-            
-            # When empty:
+
+            # If last timer is overdue (thus all timers might be overdue)
             if (fixed_deadlines[g].seconds//3600 > 12) or (fixed_deadlines[g].days> 0): #if more than 12h OR day>0
 
                 #Before Skipping: Check if list is exhausted and if any are left over.
@@ -869,23 +807,24 @@ def update_output(n_intervals, checkedgraph, what2graph):
                     blankSpace(priority_fig, "Upcoming", "Nothing in the next day.")
                     return  recursive_fig, recursive_fig2, priority_fig, deadline_fig, deadline_fig2
                 continue
+
             else:
                 visible += 1
 
-        # "WORK": Only graphs within category 1.
+        # "WORK" ----- 
+        # Only graphs within category 1.
         if what2graph == "WORK":
-            # Timer value in minutes, with max range at 180 min
-            db_val[5] = '0,180'
-            timer_value = fixed_deadlines[g].seconds//60
-            # When empty:
+            timer_value = fixed_deadlines[g].seconds//60    # Timer value in minutes          
+            db_val[5] = '0,180'                             #with max range at 180 min   
+   
+            # If last timer is overdue (thus all timers might be overdue)
             if db_val[11] != '1':
-                if g == reordered_deadlines[-1]: 
-                    # WHITE LAYOUT
-                    blankSpace(priority_fig, "For work", "We're done here.")
+                if g == reordered_deadlines[-1] and visible == 0: 
+                    blankSpace(priority_fig, "For work", "Finished with work.")
                     return  recursive_fig, recursive_fig2, priority_fig, deadline_fig, deadline_fig2
                 continue
 
-
+        # POSITIONING 3 PRIORITY GRAPHS
         #Now that values are selected, place them in order of appearance.  
         count+=1
         #Limiting us to 3 urgent graphs.
@@ -904,7 +843,7 @@ def update_output(n_intervals, checkedgraph, what2graph):
             customdata= list(db_val[2]),
             delta = {'reference': int(db_val[3]),},
             gauge = {
-                'axis': {'visible': bool(db_val[4]), 'range': [int(x) for x in (db_val[5]).split(',')] ,},
+                'axis': {'visible': False, 'range': [int(x) for x in (db_val[5]).split(',')] ,}, #visibility :bool(db_val[4])
                 'bar' : {'color' : db_val[6],}},
             title = {'text': db_val[7], 'font': {'size': size_proportional}},
             domain = {'x': graph_position[0], 'y': graph_position[1]} #[int(x) for x in (df_week[i][5]).split(',')]
@@ -1076,7 +1015,6 @@ def update_output(save, remove_left, removeR, a, b, doneR, c, d, e, f, g, h, l, 
     if button_id == 'open2-mark-remove':
 
         db_selected = df_Upcoming_events
-        print(db_selected)
         df_Upcoming_events=remove_entry(db_selected, open2)
         df_Upcoming_events.to_csv(repo_path+'/db_Upcoming_events.csv', index=False)
         return 0, 4
@@ -1141,7 +1079,7 @@ def update_output(save, remove_left, removeR, a, b, doneR, c, d, e, f, g, h, l, 
             j=i+1 #starts at 1
             performance_per_interval = sum(total[(j-1)*(int(math.ceil(rateme))):j*(int(math.ceil(rateme))) ])
             scatter_points.append([i, performance_per_interval]) 
-        print("PTS IS", scatter_points)
+
         scatter_dict[each_graph] = scatter_points
         db_selected[each_graph][12] = scatter_points
         return Wtrig, 4
@@ -1156,14 +1094,12 @@ def update_output(save, remove_left, removeR, a, b, doneR, c, d, e, f, g, h, l, 
 
         now = datetime.datetime.today()
         timestamp = now.replace(tzinfo=datetime.timezone.utc).timestamp()
-        print("registered")
         db_selected = df_Upcoming_events 
 
         db_selected[nameR] = ['gauge+number', '2021,6,29,17,20,24', 
                                 200, 100, '', '0,150', 'green', "Papeyy", '0,1', '', '', 0]
-        print(db_selected)
-        print(nameR, timeR, startR, endR)
 
+        # print(nameR, timeR, startR, endR, "category is", categoryR)
         db_selected[nameR][7] = nameR               #Title
         hh, mm = timeR[:2], timeR[3:] 
         start_date_object = datetime.date.fromisoformat(startR)
@@ -1176,14 +1112,13 @@ def update_output(save, remove_left, removeR, a, b, doneR, c, d, e, f, g, h, l, 
 
         db_selected[nameR][9] = start_time
         db_selected[nameR][10] = 'unfinished'               #COMPLETE TIME
-        print("category is", categoryR)
+
+
         db_selected[nameR][11] = categoryR         #CATEGORY: Base is '0', Work is '1', DroneLab '2'.
 
         #RANDOM COLOUR
-        print("LEN IS", len(db_selected.keys()))
         colour_dict = {0: 'green', 1: 'blue', 2: 'orange', 3: 'pink'}
         colour = colour_dict [len(db_selected.keys()) % 4 ]
-        print("COLOUR", colour)
         db_selected[nameR][6] = colour
 
 
