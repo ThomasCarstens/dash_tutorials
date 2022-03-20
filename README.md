@@ -49,16 +49,16 @@ Some non-Dash animations:
 Lighting scan exercise            |  Biggest Changes on Field
 :-------------------------:|:-------------------------:
 ![](LIVE/fieldscan_v01.gif)  |  [Too large]
-Lighting Data Acquisition. First measure of LHT11 effectiveness. | Changes in %/m of humidity and lux/m of lighting
+Lighting Data Acquisition. First measure of LHT11 effectiveness. | Changes in lux/m of lighting
 
 
 Humidity scan exercise            |  Biggest Changes on Field
 :-------------------------:|:-------------------------:
 ![](LIVE/humidscan_v01.gif)  |  [Too large]
-Humidity Data Acquisition. First measure of LHT11 effectiveness. | Changes in %/m of humidity and lux/m of lighting
+Humidity Data Acquisition. First measure of LHT11 effectiveness. | Changes in %/m of humidity 
 
 
 Latency Animation            |  Vs. Trajectory plotting.
 :-------------------------:|:-------------------------:
-![](LIVE/humidscan_v01.gif)  |  [Too large]
-Humidity Data Acquisition. First measure of LHT11 effectiveness. | Changes in %/m of humidity and lux/m of lighting
+![](LIVE/collide_latency_v01.gif)  |  [Too large]
+Timeline of trajectories: Every hump is a spiralling event triggered by a collision. |  We find a way to determine the latency.

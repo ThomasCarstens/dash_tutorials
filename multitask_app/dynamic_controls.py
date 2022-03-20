@@ -18,14 +18,13 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 import numpy as np
 import pandas as pd
 
-#RETRIEVE
-df = pd.read_csv("my_dashboard.csv")
-adc_water_log = pd.read_csv("11_09_32_adc_report_0.csv")
-params = list(adc_water_log)
-print(adc_water_log)
-max_length = len(adc_water_log)
-print(params, max_length)
-print(adc_water_log['timestamp'])
+# #RETRIEVE
+# adc_water_log = pd.read_csv("11_09_32_adc_report_0.csv")
+# params = list(adc_water_log)
+# print(adc_water_log)
+# max_length = len(adc_water_log)
+# print(params, max_length)
+# print(adc_water_log['timestamp'])
 
 # INITIALIZE: empty GAUGE trace
 fig = go.Figure()
@@ -41,48 +40,48 @@ fig.add_trace(go.Indicator(
     domain = {'x': [0,0.4], 'y': [0,1]}
     ))
 
-# INITIALIZE: empty SCATTERPLOT trace
+# # INITIALIZE: empty SCATTERPLOT trace
 scat = go.Figure()
 
 scat2 = go.Figure()
 
-# Add traces
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[0]'],
-                    mode='lines+markers',
-                    name='channel0'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[1]'],
-                    mode='lines+markers',
-                    name='channel1'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[2]'],
-                    mode='lines+markers',
-                    name='channel2'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[3]'],
-                    mode='lines+markers',
-                    name='channel3'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[4]'],
-                    mode='lines+markers',
-                    name='channel4'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[5]'],
-                    mode='lines+markers',
-                    name='channel5'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[6]'],
-                    mode='lines+markers',
-                    name='channel6'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[7]'],
-                    mode='lines+markers',
-                    name='channel7'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[8]'],
-                    mode='lines+markers',
-                    name='channel8'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[9]'],
-                    mode='lines+markers',
-                    name='channel9'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[10]'],
-                    mode='lines+markers',
-                    name='channel10'))
-scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[11]'],
-                    mode='lines+markers',
-                    name='channel11'))
+# # Add traces
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[0]'],
+#                     mode='lines+markers',
+#                     name='channel0'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[1]'],
+#                     mode='lines+markers',
+#                     name='channel1'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[2]'],
+#                     mode='lines+markers',
+#                     name='channel2'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[3]'],
+#                     mode='lines+markers',
+#                     name='channel3'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[4]'],
+#                     mode='lines+markers',
+#                     name='channel4'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[5]'],
+#                     mode='lines+markers',
+#                     name='channel5'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[6]'],
+#                     mode='lines+markers',
+#                     name='channel6'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[7]'],
+#                     mode='lines+markers',
+#                     name='channel7'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[8]'],
+#                     mode='lines+markers',
+#                     name='channel8'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[9]'],
+#                     mode='lines+markers',
+#                     name='channel9'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[10]'],
+#                     mode='lines+markers',
+#                     name='channel10'))
+# scat.add_trace(go.Scatter(x=adc_water_log['timestamp'], y=adc_water_log['raw_data[11]'],
+#                     mode='lines+markers',
+#                     name='channel11'))
 
 #scat.update_layout(clickmode='event+select') #election data also accumulates (or un-accumulates) 
                                               # selected data if you hold down the shift

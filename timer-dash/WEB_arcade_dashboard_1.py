@@ -714,6 +714,7 @@ def update_figure(traj_range, category, cb_trig): #params
             drone_xr_y = []
             drone_xr_z = []
             time_xr = []
+            time_timestamps = []
             min_selected = int(traj_range[0]*len(df_traj)/100000)
             max_selected = int(traj_range[1]*len(df_traj)/100000)
             _traj_data = df_traj[min_selected:max_selected:]
@@ -726,6 +727,7 @@ def update_figure(traj_range, category, cb_trig): #params
                 # time_xr = [datetime.datetime.fromtimestamp(element / 10**9) for element in _traj_data['time']]
                 time_xr.append(datetime.datetime.fromtimestamp(1630745292)#1630745595#1630745390#1630745185
                                     +1.74*datetime.timedelta(seconds = _traj_data['time'][entry]))
+                time_timestamps.append(_traj_data['time'][entry]) #initial at: 1630745292+
             # REMOVE ALL MENTION OF COLLISIONS ####
             # Choose custom size for collisions.
             # collision_from_vr = (drone_xr_x[0]*quotient == df_hdi_collisions[' x'][min_selected:max_selected:][0])
@@ -780,19 +782,23 @@ def update_figure(traj_range, category, cb_trig): #params
             print(delays)
 
             df_smlatency = pd.DataFrame({
-                                        'delays_time': (delays_time),
+                                        'delays_time': (delays_time), # revert to timestamps. Mpl might have tools to read it
                                         'delays': (delays),
                                         })
 
             df_smvisual = pd.DataFrame({
-                                        'sim_time': (time_xr)[lower_bound:],
-                                        'x': (drone_xr_x)[lower_bound:], 
+                                        'sim_time': (time_timestamps)[lower_bound:],
+                                        'x': (drone_xr_x)[lower_bound:], #lower bound useless here I reckon.
                                         'y': (drone_xr_y)[lower_bound:],
-                                        'z': (drone_xr_z)[lower_bound:]
+                                        'z': (drone_xr_z)[lower_bound:],
+                                        # SUPERPOSITION REQUIRES NEW APPROACH.
+                                        # 'xD': (drone_traj_x)[lower_bound:], 
+                                        # 'yD': (drone_traj_y)[lower_bound:],
+                                        # 'zD': (drone_traj_z)[lower_bound:],
                                         })
             # SAVED !
             # df_smlatency.to_csv("sensor_performance/smlatency.csv", index=False)
-            # df_smvisual.to_csv("sensor_performance/df_smvisual.csv", index=False)
+            df_smvisual.to_csv("sensor_performance/df_smvisual.csv", index=False)
 
 
             traj_graph.add_trace(go.Scatter(x=time_xr, y=drone_xr_z,

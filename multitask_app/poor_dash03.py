@@ -173,17 +173,8 @@ app.layout = html.Div([
         value='Time Dashboard'
     )),
 
-    html.H3('Outcomes of Drone Dev'),
+    # html.H3('Outcomes of Drone Dev'),
 
-    # (dcc.Dropdown(
-    #     id = 'drone-dev-dropdown',
-    #     options=[
-    #         {'label': '1 July: Drone Photogrammetry', 'value': 'Drone Photogrammetry'},
-    #         {'label': '5 July: Onboarding Sensors', 'value': 'Onboarding Sensors'},
-    #         {'label': '20 July: Drone Drop', 'value': 'Drone Drop'},
-    #     ],
-    #     placeholder="Choose Section",
-    # )),
     # Update interval of 1s for Graph Rendering
     html.Div(dcc.Interval(
             id='interval-component',
@@ -212,31 +203,41 @@ app.layout = html.Div([
               #prevent_initial_call=True
               )
 def display_page(value):
-    if value == "Time Dashboard" :
-        return html.Div([
-            DYNAMIC_CONTROLS['timer-graphs'],
-            #DYNAMIC_CONTROLS['edit-timers'],
-            #DYNAMIC_CONTROLS['see-database']
-            DYNAMIC_CONTROLS['open1-window'],
-            DYNAMIC_CONTROLS['open2-window'],
-            DYNAMIC_CONTROLS['edit1-window'],
-            DYNAMIC_CONTROLS['edit2-window'],
-        ])
-    if value == "Photogrammetry":
-        return html.Div([
-            DYNAMIC_CONTROLS['general-photogrammetry'],
-            DYNAMIC_CONTROLS['2-photos'],
-        ])
-    if value == "Machine Learning" :
-        return html.Div([
-            DYNAMIC_CONTROLS['drone-graphs'],
-            #DYNAMIC_CONTROLS['timer-graphs']
-        ])
-    if value == "Drone Dev" :
-        return html.Div([
-            DYNAMIC_CONTROLS['drone-graphs'],
-            #DYNAMIC_CONTROLS['timer-graphs']
-        ])
+
+    return html.Div([
+        DYNAMIC_CONTROLS['timer-graphs'],
+        #DYNAMIC_CONTROLS['edit-timers'],
+        #DYNAMIC_CONTROLS['see-database']
+        DYNAMIC_CONTROLS['open1-window'],
+        DYNAMIC_CONTROLS['open2-window'],
+        DYNAMIC_CONTROLS['edit1-window'],
+        DYNAMIC_CONTROLS['edit2-window'],
+    ])
+    # if value == "Time Dashboard" :
+    #     return html.Div([
+    #         DYNAMIC_CONTROLS['timer-graphs'],
+    #         #DYNAMIC_CONTROLS['edit-timers'],
+    #         #DYNAMIC_CONTROLS['see-database']
+    #         DYNAMIC_CONTROLS['open1-window'],
+    #         DYNAMIC_CONTROLS['open2-window'],
+    #         DYNAMIC_CONTROLS['edit1-window'],
+    #         DYNAMIC_CONTROLS['edit2-window'],
+    #     ])
+    # if value == "Photogrammetry":
+    #     return html.Div([
+    #         DYNAMIC_CONTROLS['general-photogrammetry'],
+    #         DYNAMIC_CONTROLS['2-photos'],
+    #     ])
+    # if value == "Machine Learning" :
+    #     return html.Div([
+    #         DYNAMIC_CONTROLS['drone-graphs'],
+    #         #DYNAMIC_CONTROLS['timer-graphs']
+    #     ])
+    # if value == "Drone Dev" :
+    #     return html.Div([
+    #         DYNAMIC_CONTROLS['drone-graphs'],
+    #         #DYNAMIC_CONTROLS['timer-graphs']
+    #     ])
 
 @app.callback(dash.dependencies.Output('page-content-more', 'children'),
                 dash.dependencies.Output('session-nav', 'data'),
